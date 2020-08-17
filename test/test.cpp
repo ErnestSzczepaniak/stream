@@ -3,8 +3,10 @@
 
 TEST_CASE("asd")
 {
-    Stream s;   
+    Stream s;
 
+    auto res = s.buffer.format("%s", "asd");
+    s.buffer.format("%s", "asd");
 
 
 }

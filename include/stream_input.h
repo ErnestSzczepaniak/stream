@@ -4,40 +4,33 @@
 /**
  * @file	stream_input.h
  * @author	en2
- * @date	21-07-2020
+ * @date	17-08-2020
  * @brief	
  * @details	
 **/
 
-#include "stream_generic.h"
+#include "stream_buffer_pointer.h"
 
-class Stream_input : public Stream_generic
+class Stream_input
 {
 public:
-    Stream_input(char * buffer_front, char * buffer_back, int size);
- 
-    template<typename ...P>
-    Stream_input & custom(const char * format, P ... params);
-
-    template<typename T> Stream_input & decimal(T value);
-
-    Stream_input & text(const char * text);
-    Stream_input & r();
-    Stream_input & n();
-
-protected:
+    Stream_input(Stream_buffer & buffer);
     
+    template<typename ...Args>
+    Stream_input & format(const char * format, Args ... args);
 
-private:
-    
+    //Stream_buffer_pointer pointer;
 
 }; /* class: Stream_input */
 
-template<typename ...P>
-Stream_input & Stream_input::custom(const char * format, P ... params)
+template<typename ...Args>
+Stream_input & Stream_input::format(const char * format, Args ... args)
 {
+    // auto size = snprintf(pointer.get(), _size - pointer.position(), format, args...);
 
+    // pointer.move(size);
+
+    // return *this;
 }
-
 
 #endif /* define: stream_input_h */

@@ -4,32 +4,23 @@
 /**
  * @file	stream.h
  * @author	en2
- * @date	21-07-2020
+ * @date	17-08-2020
  * @brief	
  * @details	
 **/
 
-#include "stream_input.h"
+
+#include "stream_buffer.h"
 
 class Stream
 {
-    static constexpr auto size_buffer = 1024;
-
 public:
     Stream();
 
-    Stream & clear();
+    Stream & reset();
 
+    Stream_buffer buffer;
 
-    Stream_input input;
-
-
-protected:
-    
-
-private:
-    char _buffer_front[size_buffer];
-    char _buffer_back[size_buffer];
 
 }; /* class: Stream */
 
