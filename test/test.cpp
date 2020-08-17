@@ -5,8 +5,12 @@ TEST_CASE("asd")
 {
     Stream s;
 
-    auto res = s.buffer.format("%s", "asd");
-    s.buffer.format("%s", "asd");
+    s.input.pointer.position();
+
+    s.input.format("%s", "siema");
+
+    s.input.decimal(10);
 
 
+    printf("%s\n", s.input.pointer.initial());
 }

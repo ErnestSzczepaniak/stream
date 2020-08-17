@@ -9,19 +9,15 @@
  * @details	
 **/
 
-
-#include "stream_buffer.h"
+#include "stream_input.h"
 
 class Stream
 {
 public:
-    Stream();
 
-    Stream & reset();
-
-    Stream_buffer buffer;
-
+    Stream_input input;
 
 }; /* class: Stream */
+
 
 #endif /* define: stream_h */

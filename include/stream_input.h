@@ -9,28 +9,45 @@
  * @details	
 **/
 
-#include "stream_buffer_pointer.h"
+#include "stream_generic.h"
+#include "stdio.h"
+#include "string.h"
 
-class Stream_input
+class Stream_input : public Stream_generic
 {
 public:
-    Stream_input(Stream_buffer & buffer);
-    
-    template<typename ...Args>
+    template<typename ... Args>
     Stream_input & format(const char * format, Args ... args);
 
-    //Stream_buffer_pointer pointer;
+    template<typename T> Stream_input & decimal(T value);
+
+    Stream_input & text(const char * value);
+    Stream_input & character(char value);
 
 }; /* class: Stream_input */
 
-template<typename ...Args>
+template<typename ... Args>
 Stream_input & Stream_input::format(const char * format, Args ... args)
 {
-    // auto size = snprintf(pointer.get(), _size - pointer.position(), format, args...);
+    char temp[128];
+    auto size_actual = 0;
 
-    // pointer.move(size);
+    auto size = snprintf(temp, 128, format, args...);
 
-    // return *this;
+    if (size <= size_remaining()) size_actual = size;
+    else if (size > size_remaining()) size_actual = size_remaining();
+
+    memcpy(pointer.current(), temp, size_actual);
+
+    pointer.move(size_actual);
+
+    return *this;
+}
+
+template<typename T>
+Stream_input & Stream_input::decimal(T value)
+{
+    return format("%d", value);
 }
 
 #endif /* define: stream_input_h */
