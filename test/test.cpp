@@ -5,12 +5,8 @@ TEST_CASE("asd")
 {
     Stream s;
 
-    s.input.pointer.position();
+    s.input.integer(10);
 
-    s.input.format("%s", "siema");
+    auto w = s.output.integer(0);
 
-    s.input.decimal(10);
-
-
-    printf("%s\n", s.input.pointer.initial());
 }

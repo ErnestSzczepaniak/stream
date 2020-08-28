@@ -9,15 +9,20 @@
  * @details	
 **/
 
-#include "stream_input.h"
+#include "stream_channel_input.h"
+#include "stream_channel_output.h"
 
 class Stream
 {
 public:
+    Stream();
 
-    Stream_input input;
+    Stream_channel_input input;
+    Stream_channel_output output;
+
+private:
+    Stream_buffer _buffer;
 
 }; /* class: Stream */
-
 
 #endif /* define: stream_h */

@@ -9,15 +9,17 @@
  * @details	
 **/
 
-#include "stream_generic.h"
+#include "stream_channel.h"
 
-class Stream_output : public Stream_generic
+class Stream_channel_output : public Stream_channel
 {
 public:
+    int integer(int word);
+    const char * text(int word);
 
 
 protected:
-    
+    void _point_word(int word);
 
 private:
     
