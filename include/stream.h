@@ -9,19 +9,16 @@
  * @details	
 **/
 
-#include "stream_channel_input.h"
-#include "stream_channel_output.h"
+#include "stream_channel.h"
 
 class Stream
 {
 public:
     Stream();
 
-    Stream_channel_input input;
-    Stream_channel_output output;
+    Stream & reset();
 
-private:
-    Stream_buffer _buffer;
+    stream::Channel channel[2];
 
 }; /* class: Stream */
 

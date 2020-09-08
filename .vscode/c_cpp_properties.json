@@ -4,7 +4,9 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/include",
-                "${workspaceFolder}/../designer/"
+                "${workspaceFolder}/../designer/",
+                "${workspaceFolder}/../tools/include/",
+                "${workspaceFolder}/../tools/include/string/"
             ],
             "intelliSenseMode": "gcc-x64",
             "compilerPath": "/usr/bin/gcc",

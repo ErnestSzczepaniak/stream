@@ -1,13 +1,18 @@
 #include "stream_channel.h"
 
-Stream_buffer * Stream_channel::buffer()
+namespace stream
 {
-    return _buffer;
+
+Channel::Channel() : input(_buffer, size_buffer), output(_buffer, size_buffer)
+{
+
 }
 
-Stream_channel & Stream_channel::buffer(Stream_buffer * buffer)
+Channel::~Channel()
 {
-    _buffer = buffer;
 
-    return *this;
 }
+
+}; /* namespace: stream */
+
+

@@ -9,21 +9,31 @@
  * @details	
 **/
 
-#include "stream_buffer.h"
-#include "stream_pointer.h"
+#include "stream_channel_input.h"
+#include "stream_channel_output.h"
 
-class Stream_channel
+namespace stream
 {
-public:
-    Stream_buffer * buffer();
-    Stream_channel & buffer(Stream_buffer * buffer);
 
-    Stream_pointer pointer;   
+class Channel
+{
+    static constexpr auto size_buffer = 1024;
+
+public:
+    Channel();
+    ~Channel();
+
+    channel::Input input;
+    channel::Output output;
 
 private:
-    Stream_buffer * _buffer = nullptr;
-
+    char _buffer[size_buffer];
+    
 }; /* class: Stream_channel */
 
+}; /* namespace: stream */
 
-#endif /* define: stream_channel_h */
+
+
+
+#endif /* define: _stream_channel_h */

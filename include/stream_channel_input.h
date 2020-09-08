@@ -1,45 +1,69 @@
-#ifndef _stream_channel_input_h
-#define _stream_channel_input_h
+#ifndef _Input_h
+#define _Input_h
 
 /**
- * @file	stream_channel_input.h
+ * @file	Input.h
  * @author	en2
  * @date	18-08-2020
  * @brief	
  * @details	
 **/
 
-#include "stream_channel.h"
 #include "stdio.h"
 #include "string.h"
+#include "tools_string.h"
+#include "stream_pointer.h"
+#include "stream_channel_input_ansi.h"
 
-class Stream_channel_input : public Stream_channel
+namespace stream::channel
+{
+
+class Input
 {
 public:
+    Input(char * buffer, int size);
+
     template<typename ... Args>
-    Stream_channel_input & format(const char * format, Args ... args);
+    Input & format(const char * format, Args ... args);
 
-    Stream_channel_input & integer(int value);
-    Stream_channel_input & text(const char * text);
+    template<typename T> Input & decimal(T value, const char * delimiters = " ");
+    template<typename T> Input & hexadecimal(T value, int digits = 8, const char * delimiters = " ");
+    template<typename T> Input & floating(T value, int digits = 2, const char * delimiters = " ");
 
-}; /* class: Stream_input */
+    Input & character(char value, const char * delimiters = " ");
+    Input & word(char * value, const char * delimiters = " ");
+
+    Pointer pointer;
+    input::Ansi ansi;
+
+}; /* class: Input */
 
 template<typename ... Args>
-Stream_channel_input & Stream_channel_input::format(const char * format, Args ... args)
+Input & Input::format(const char * format, Args ... args)
 {
-    char temp[128];
-    auto size_actual = 0;
-
-    auto size = snprintf(temp, 128, format, args...);
-
-    if (size <= buffer()->size_remaining()) size_actual = size;
-    else if (size > buffer()->size_remaining()) size_actual = buffer()->size_remaining();
-
-    memcpy(pointer.current(), temp, size_actual);
-
-    pointer.move(size_actual);
+    pointer_input(pointer, format, args...);
 
     return *this;
 }
 
-#endif /* define: stream_channel_input_h */
+template<typename T> 
+Input & Input::decimal(T value, const char * delimiters)
+{
+    return format("%d%s", value, delimiters);
+}
+
+template<typename T> 
+Input & Input::hexadecimal(T value, int digits, const char * delimiters)
+{
+    return format("0x%0*x%s", digits, value, delimiters);
+}
+
+template<typename T>
+Input & Input::floating(T value, int digits, const char * delimiters)
+{
+    return format("%.*f%s", digits, value, delimiters);
+}
+
+}; /* namespace: stream::channel */
+
+#endif /* define: Input_h */

@@ -1,11 +1,21 @@
 #include "stream_channel_input.h"
 
-Stream_channel_input & Stream_channel_input::integer(int value)
+namespace stream::channel
 {
-    return format("%d", value);
+
+Input::Input(char * buffer, int size) : pointer(buffer, size), ansi(pointer)
+{
+
 }
 
-Stream_channel_input & Stream_channel_input::text(const char * value)
+Input & Input::word(char * value, const char * delimiters)
 {
-    return format("%s", value);
+    return format("%s%s", value, delimiters);
 }
+
+Input & Input::character(char value, const char * delimiters)
+{
+    return format("%c%s", value, delimiters);
+}
+
+}; /* namespace: stream::channel */

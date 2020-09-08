@@ -1,16 +1,28 @@
 #include "stream_channel_output.h"
-#include <iostream>
-#include "string.h"
+#include "tools_string.h"
 
-int Stream_channel_output::integer(int word)
+namespace stream::channel
 {
-    return std::stoi(pointer.initial());
+
+Output::Output(char * buffer, int size) : pointer(buffer, size)
+{
+
 }
 
-/* ---------------------------------------------| info |--------------------------------------------- */
-
-void Stream_channel_output::_point_word(int word)
+Output::~Output()
 {
-    pointer.reset();
 
 }
+
+char Output::character(int word, const char * delimiters)
+{
+
+}
+
+char * Output::word(int word, const char * delimiters)
+{
+
+}
+
+
+}; /* namespace: stream::channel */

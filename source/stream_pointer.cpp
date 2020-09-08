@@ -1,52 +1,83 @@
 #include "stream_pointer.h"
 
-char * Stream_pointer::initial()
+namespace stream
 {
-    return _initial;
+
+Pointer::Pointer(char * start, int size)
+:
+_start(start),
+_current(start),
+_size(size)
+{
+
 }
 
-Stream_pointer & Stream_pointer::initial(char * value)
+Pointer::~Pointer()
 {
-    _initial = value;
 
-    return *this;
 }
 
-char * Stream_pointer::current()
+char * Pointer::start()
+{
+    return _start;
+}
+
+char * Pointer::stop()
+{
+    return (_start + _size);
+}
+
+char * Pointer::end()
+{
+    return (_start + tools::string::get::size(_start));
+}
+
+char * Pointer::current()
 {
     return _current;
 }
 
-Stream_pointer & Stream_pointer::current(char * value)
+int Pointer::size_stop()
 {
-    _current = value;
+    return (_size);
+}
+
+int Pointer::size_end()
+{
+    return (end() - start());
+}
+
+int Pointer::size_current()
+{
+    return (_current - _start);
+}
+
+Pointer & Pointer::move_start()
+{
+    _current = _start;
 
     return *this;
 }
 
-int Stream_pointer::position()
+Pointer & Pointer::move_stop()
 {
-    return (_current - _initial);
-}
-
-Stream_pointer & Stream_pointer::position(int value)
-{
-    _current = _initial + value;
+    _current = stop();
 
     return *this;
 }
 
-Stream_pointer & Stream_pointer::reset()
+Pointer & Pointer::move_end()
 {
-    _current = _initial;
+    _current = end();
 
     return *this;
 }
 
-Stream_pointer & Stream_pointer::move(int value)
+Pointer & Pointer::move(int value)
 {
-    _current += value;
+    if ((_current + value >= _start) && (_current + value < (_start + _size))) _current += value;
 
     return *this;
 }
 
+}; /* namespace: stream */
