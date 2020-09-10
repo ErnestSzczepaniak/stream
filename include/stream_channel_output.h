@@ -34,10 +34,6 @@ public:
 
 }; /* class: Stream_channel_output */
 
-static bool is_digit(const char value) { return std::isdigit(value); }
-static bool is_numeric(char * word, int size) { return std::all_of(word, word + size, is_digit); }
-
-
 template<typename T>
 T Output::decimal(int word, const char * delimiters)
 {

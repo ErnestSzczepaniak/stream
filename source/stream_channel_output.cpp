@@ -16,12 +16,14 @@ Output::~Output()
 
 char Output::character(int word, const char * delimiters)
 {
+    auto * ptr = pointer_output(pointer, word, delimiters);
 
+    return *ptr;
 }
 
 char * Output::word(int word, const char * delimiters)
 {
-
+    
 }
 
 

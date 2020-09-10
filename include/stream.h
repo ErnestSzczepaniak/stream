@@ -9,17 +9,32 @@
  * @details	
 **/
 
-#include "stream_channel.h"
+#include "stream_generic.h"
 
-class Stream
+template<int channels>
+class Stream : public Stream_generic
 {
 public:
-    Stream();
+    Stream() {}
 
-    Stream & reset();
+    int size();
+    stream::Channel * channel(int index = 0);
 
-    stream::Channel channel[2];
+private:
+    stream::Channel _channel[channels];
 
 }; /* class: Stream */
+
+template<int channels>
+int Stream<channels>::size()
+{
+    return channels;
+}
+
+template<int channels>
+stream::Channel * Stream<channels>::channel(int index)
+{
+    return (index < channels) ? &_channel[index] : nullptr;
+}
 
 #endif /* define: stream_h */

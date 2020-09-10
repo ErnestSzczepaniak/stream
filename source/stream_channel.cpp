@@ -21,7 +21,6 @@ Channel & Channel::reset()
     output.pointer.move_start();
 }
 
-
 }; /* namespace: stream */
 
 
