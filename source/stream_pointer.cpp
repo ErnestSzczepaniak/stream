@@ -52,6 +52,11 @@ int Pointer::size_current()
     return (_current - _start);
 }
 
+bool Pointer::is_aligned()
+{
+    return (size_current() == size_end());
+}
+
 Pointer & Pointer::move_start()
 {
     _current = _start;

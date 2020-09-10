@@ -23,6 +23,8 @@ public:
     Channel();
     ~Channel();
 
+    Channel & reset();
+
     channel::Input input;
     channel::Output output;
 

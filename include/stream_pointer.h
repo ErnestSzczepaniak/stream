@@ -39,6 +39,8 @@ public:
     int size_end();
     int size_current();
 
+    bool is_aligned();
+
     Pointer & move_start();
     Pointer & move_stop();
     Pointer & move_end();
