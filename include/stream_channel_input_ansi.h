@@ -27,6 +27,11 @@ public:
     Ansi(Pointer & pointer);
     ~Ansi();
 
+    Ansi & reset();
+    Ansi & size(int x, int y);
+    Ansi & minimize();
+    Ansi & maximize();
+
     ansi::Clear clear;
     ansi::Cursor cursor;
     ansi::Margins margins;
@@ -34,6 +39,9 @@ public:
     ansi::Font font;
     ansi::Color color;
     ansi::Special special;
+
+private:
+    Pointer & _pointer;
 
 }; /* class: Ansi */
 

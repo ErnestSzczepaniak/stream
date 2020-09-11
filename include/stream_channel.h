@@ -11,6 +11,7 @@
 
 #include "stream_channel_input.h"
 #include "stream_channel_output.h"
+#include "stream_channel_info.h"
 
 namespace stream
 {
@@ -27,6 +28,7 @@ public:
 
     channel::Input input;
     channel::Output output;
+    channel::Info info;
 
 private:
     char _buffer[size_buffer];

@@ -9,7 +9,6 @@ struct termios orig_termios;
 void disableRawMode() {
   tcsetattr(STDIN_FILENO, TCSAFLUSH, &orig_termios);
 }
-
 void enableRawMode() 
 {
   tcgetattr(STDIN_FILENO, &orig_termios);
@@ -19,7 +18,6 @@ void enableRawMode()
   tcsetattr(STDIN_FILENO, TCSAFLUSH, &raw);
   system("clear");
 }
-
 char get()
 {
     char temp;
@@ -27,35 +25,6 @@ char get()
     read(STDIN_FILENO, &temp, 1);
 
     return temp;
-}
-
-// escape 27 91
-
-enum class Mode : unsigned char
-{
-    INPUT,
-    ESCAPE
-}; /* enum: Mode */
-
-enum class Control : unsigned char
-{
-    TAB = 9,
-    ENTER = 10,
-    ESCAPE_1 = 27,
-    ESCAPE_DEL = 51,
-    ESCAPE_UP = 65,
-    ESCAPE_DOWN = 66,
-    ESCAPE_RIGHT = 67,
-    ESCAPE_LEFT = 68,
-    ESCAPE_END = 70,
-    ESCAPE_HOME = 72,
-    ESCAPE_2 = 91,
-    BACKSPACE = 127
-}; /* enum: Control */
-
-bool is_control(char character, Control control)
-{
-    return (character == (char) control);
 }
 
 void print(stream::Channel * channel)
@@ -66,102 +35,161 @@ void print(stream::Channel * channel)
     fflush(nullptr);
 }
 
-// void handler_backspace(Stream & stream)
-// {
-//     if (stream.channel[0].input.pointer.size_current() == 0) return;
-
-//     auto size = stream.channel[0].input.pointer.size_end() - stream.channel[0].input.pointer.size_current();
-
-//     stream.channel[1].input.ansi.cursor.move.left(1);
-
-//     stream.channel[1].input.word(stream.channel[0].input.pointer.current());
-//     tools::string::trim::left::characters(stream.channel[0].input.pointer.current() - 1, 1);
-//     stream.channel[0].input.pointer.move(-1);
-
-//     stream.channel[1].input.pointer.move_end();
-//     stream.channel[1].input.word("");
-
-//     stream.channel[1].input.ansi.cursor.move.left(size + 2);
-// }
-
-// void handler_home(Stream & stream)
-// {
-//     if (stream.channel[0].input.pointer.size_current() == 0) return;
-
-//     auto size = stream.channel[0].input.pointer.size_current();
-//     stream.channel[0].input.pointer.move_start();
-//     stream.channel[1].input.ansi.cursor.move.left(size);
-// }
-
-// void handler_end(Stream & stream)
-// {
-//     if (stream.channel[0].input.pointer.is_aligned() == true) return;
-
-//     auto size = stream.channel[0].input.pointer.size_end() - stream.channel[0].input.pointer.size_current();
-//     stream.channel[0].input.pointer.move_end();
-//     stream.channel[1].input.ansi.cursor.move.right(size);
-// }
-
-// void handler_left(Stream & stream)
-// {
-//     if (stream.channel[0].input.pointer.size_current() == 0) return;
-    
-//     stream.channel[0].input.pointer.move(-1);
-//     stream.channel[1].input.ansi.cursor.move.left(1);  
-// }
-
-// void handler_right(Stream & stream)
-// {
-//     if (stream.channel[0].input.pointer.is_aligned() == true)
-    
-//     stream.channel[0].input.pointer.move(1);
-//     stream.channel[1].input.ansi.cursor.move.right(1);
-// }
-
-// void handler_del(Stream & stream)
-// {
-//     if (stream.channel[0].input.pointer.size_end() - stream.channel[0].input.pointer.size_current() > 0)
-//     {
-
-//     }
-// }
-
-// void handler_enter(Stream & stream)
-// {
-//     auto * text = "\n channel[0] stream = ";
-//     print((char *) text, strlen(text));
-//     print(stream.channel[0].output.pointer.start(), stream.channel[0].output.pointer.size_end());
-//     print("\n", 1);
-//     exit(1);
-// }
-
-// void handler_tab(Stream & stream)
-// {
-
-// }
-
-// using Handler = void (*)(Stream &, char);
-
-const char * tab[] = 
+void handler_enter(Stream_generic & stream)
 {
-    "\x1b\x5b\x9\0",
-    "\x1b\x12"
-};
+    printf("\n");
+    print(stream.channel(1));
+    printf("\n");
+    exit(1);
+}
 
 void handler_printable(Stream_generic & stream)
 {
     stream.channel(1)->input.character(stream.channel(0)->output.character(), "");
     stream.channel(2)->input.word(stream.channel(1)->input.pointer.current() - 1, "");
     if (stream.channel(1)->input.pointer.is_aligned() == false) stream.channel(2)->input.ansi.cursor.move.left(stream.channel(1)->input.pointer.size_end() - stream.channel(1)->input.pointer.size_current());
+
     stream.channel(0)->reset();
 }
 
+void handler_backspace(Stream_generic & stream)
+{
+    stream.channel(0)->reset();
+
+    if (stream.channel(1)->input.pointer.size_current() == 0) return;
+
+    auto size = stream.channel(1)->input.pointer.size_end() - stream.channel(1)->input.pointer.size_current();
+
+    stream.channel(2)->input.ansi.cursor.move.left(1);
+
+    stream.channel(2)->input.word(stream.channel(1)->input.pointer.current());
+    tools::string::trim::left::characters(stream.channel(1)->input.pointer.current() - 1, 1);
+    stream.channel(1)->input.pointer.move(-1);
+
+    stream.channel(2)->input.pointer.move_end();
+    stream.channel(2)->input.word("");
+
+    stream.channel(2)->input.ansi.cursor.move.left(size + 2);
+
+}
+
+void handler_home(Stream_generic & stream)
+{
+    stream.channel(0)->reset();
+
+    if (stream.channel(1)->input.pointer.size_current() == 0) return;
+
+    auto size = stream.channel(1)->input.pointer.size_current();
+    stream.channel(1)->input.pointer.move_start();
+    stream.channel(2)->input.ansi.cursor.move.left(size);
+}
+
+void handler_end(Stream_generic & stream)
+{
+    stream.channel(0)->reset();
+
+    if (stream.channel(1)->input.pointer.is_aligned() == true) return;
+
+    auto size = stream.channel(1)->input.pointer.size_end() - stream.channel(1)->input.pointer.size_current();
+    stream.channel(1)->input.pointer.move_end();
+    stream.channel(2)->input.ansi.cursor.move.right(size);
+}
+
+void handler_left(Stream_generic & stream)
+{
+    stream.channel(0)->reset();
+
+    if (stream.channel(1)->input.pointer.size_current() == 0) return;
+
+    stream.channel(1)->input.pointer.move(-1);
+    stream.channel(2)->input.ansi.cursor.move.left(1);  
+}
+
+void handler_right(Stream_generic & stream)
+{
+    stream.channel(0)->reset();
+
+    if (stream.channel(1)->input.pointer.is_aligned() == true) return;
+
+    stream.channel(1)->input.pointer.move(1);
+    stream.channel(2)->input.ansi.cursor.move.right(1);
+}
+
+void handler_up(Stream_generic & stream)
+{
+
+}
+
+void handler_down(Stream_generic & stream)
+{
+
+}
+
+void handler_delete(Stream_generic & stream)
+{
+    stream.channel(0)->reset();
+
+    if (stream.channel(1)->input.pointer.is_aligned() == true) return;
+
+    auto size = stream.channel(1)->input.pointer.size_end() - stream.channel(1)->input.pointer.size_current();
+
+    stream.channel(2)->input.word(stream.channel(1)->input.pointer.current() + 1);
+    tools::string::trim::left::characters(stream.channel(1)->input.pointer.current(), 1);
+
+    stream.channel(2)->input.pointer.move_end();
+    stream.channel(2)->input.word("");
+
+    stream.channel(2)->input.ansi.cursor.move.left(size + 1);
+}
+
+enum class Mode : unsigned char
+{
+    INPUT,
+    ESCAPE
+}; /* enum: Mode */
+
+using Handler_escape = void (*)(Stream_generic &);
+
+Handler_escape table_handler[] = 
+{
+    handler_home,
+    handler_end,
+    handler_left,
+    handler_right,
+    handler_up,
+    handler_down,
+    handler_delete
+};
+
+char table_escape[][5] = 
+{
+    {27, 91, 72, 0, 0}, // home
+    {27, 91, 70, 0, 0}, // end
+    {27, 91, 68, 0, 0}, // left
+    {27, 91, 67, 0, 0}, // right
+    {27, 91, 65, 0, 0}, // up
+    {27, 91, 66, 0, 0}, // down
+    {27, 91, 51, 126, 0} // delete
+};
+
 TEST_CASE("shell")
 {
+    auto rows = 2;
+    auto columns = 5;
+
     enableRawMode();
 
     Stream<3> stream;
     stream.reset();
+
+    stream.channel(0)->input.ansi.reset().size(64, 128);
+    print(stream.channel(0));
+    stream.channel(0)->reset();
+
+    Mode mode = Mode::INPUT;
+
+
+    auto limit = 20;
 
     while(1)
     {
@@ -169,76 +197,31 @@ TEST_CASE("shell")
 
         stream.channel(0)->input.character(character, "");
 
-        if (character >= 32 && character < 127) handler_printable(stream);
-
-        print(stream.channel(2));
-        stream.channel(2)->reset();
+        if (character == 10) handler_enter(stream);
+        else if (character == 27) mode = Mode::ESCAPE;
+        else if (character >= 32 && character < 127 && mode == Mode::INPUT)
+        {
+            if (stream.channel(1)->input.pointer.size_end() < limit) handler_printable(stream);
+            else stream.channel(0)->reset();
+        } 
+        else if (character == 127 && mode == Mode::INPUT) handler_backspace(stream);
+        else
+        {
+            for (int i = 0; i < sizeof(table_escape) / 5; i++)
+            {
+                if (stream.channel(0)->info.compare.difference(&table_escape[i][0], 0, "") == 0)
+                {
+                    table_handler[i](stream);
+                    mode = Mode::INPUT;
+                    break; 
+                }
+            }
+        }
+        
+        if (stream.channel(2)->input.pointer.size_end() > 0)
+        {
+            print(stream.channel(2));
+            stream.channel(2)->reset();
+        }
     }
-    
-
-
-
-
-    // auto mode = Mode::INPUT;
-
-    // char character_last;
-
-    // while(1)
-    // {
-    //     auto character_current = get();
-
-    //     if (mode == Mode::INPUT)
-    //     {
-    //         if (character_current >= 32 && character_current < 127) // direct printable
-    //         {
-    //             handler_printable(character_current, s);
-    //         }
-    //         else if (is_control(character_current, Control::BACKSPACE))
-    //         {
-    //             handler_backspace(s);
-    //         }
-    //         else if (is_control(character_current, Control::TAB))
-    //         {      
-    //             handler_tab(s);
-    //         }
-    //         else if (is_control(character_current, Control::ENTER))
-    //         {
-    //             handler_enter(s);
-    //         }
-    //         else if (is_control(character_current, Control::ESCAPE_1))
-    //         {
-    //             mode = Mode::ESCAPE;
-    //         }
-    //     }
-    //     else if (mode == Mode::ESCAPE)
-    //     {
-    //         if (is_control(character_current, Control::ESCAPE_HOME))
-    //         {
-    //             handler_home(s);
-    //         }
-    //         else if (is_control(character_current, Control::ESCAPE_END))
-    //         {
-    //             handler_end(s);
-    //         }
-    //         else if (is_control(character_current, Control::ESCAPE_LEFT))
-    //         {
-    //             handler_left(s);
-    //         }
-    //         else if (is_control(character_current, Control::ESCAPE_RIGHT))
-    //         {
-    //             handler_right(s);
-    //         }
-    //         else if (is_control(character_current, Control::ESCAPE_DEL))
-    //         {
-    //             handler_del(s);
-    //         }
-
-    //         if (is_control(character_last, Control::ESCAPE_2)) mode = Mode::INPUT;
-    //     }
-
-    //     print(s.channel[1].output.pointer.start(), s.channel[1].output.pointer.size_end());
-    //     s.channel[1].reset();
-
-    //     character_last = character_current;
-    // }
 }
