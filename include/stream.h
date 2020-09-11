@@ -15,7 +15,14 @@ template<int channels>
 class Stream : public Stream_generic
 {
 public:
-    Stream() {}
+    Stream()
+    {
+        for (int i = 0; i < channels; i++)
+        {
+            _channel[i].reset();
+        }
+        
+    }
 
     int size();
     stream::Channel * channel(int index = 0);
