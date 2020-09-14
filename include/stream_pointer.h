@@ -30,23 +30,25 @@ public:
     Pointer(char * start, int size);
     ~Pointer();
 
-    char * start();
-    char * stop();
-    char * end();
-    char * current();
+    Pointer & position(int value);
+    int position();
 
-    int size_stop();
-    int size_end();
-    int size_current();
+    Pointer & reset();
 
-    bool is_aligned();
+    operator char *();
+    char operator*();
 
-    Pointer & move_start();
-    Pointer & move_stop();
-    Pointer & move_end();
-    Pointer & move(int value);
+    Pointer & operator++(int);
+    Pointer & operator--(int);
+    
+    Pointer & operator+=(int value);
+    Pointer & operator-=(int value);
 
+    Pointer & operator=(char * value);
     Pointer & operator=(Pointer & other);
+
+protected:
+    Pointer & _move(int value);
 
 private:
     char * _start;
@@ -58,35 +60,35 @@ private:
 template<typename ...Args>
 static inline void pointer_input(Pointer & pointer, const char * format, Args ... args)
 {
-    using namespace tools::string;
+    // using namespace tools::string;
 
-    int size;
+    // int size;
 
-    if (*pointer.current() != 0)
-    {
-        size = insert::preppend::format(pointer.current(), pointer.size_stop(), format, args...);
-    }
-    else
-    {
-        size = insert::append::format(pointer.start(), pointer.size_stop(), format, args...);
-    }
+    // if (*pointer != 0)
+    // {
+    //     size = insert::preppend::format(pointer.current(), pointer.size_stop(), format, args...);
+    // }
+    // else
+    // {
+    //     size = insert::append::format(pointer.start(), pointer.size_stop(), format, args...);
+    // }
 
-    if (size > 0) pointer.move(size);
+    // if (size > 0) pointer.move(size);
 }
 
 static inline char * pointer_output(Pointer & pointer, int word, const char * delimiters)
 {
-    using namespace tools::string;
+    // using namespace tools::string;
 
-    auto * ptr = get::word(pointer.current(), word, delimiters);
+    // auto * ptr = get::word(pointer.current(), word, delimiters);
 
-    if (ptr == nullptr) return nullptr;
+    // if (ptr == nullptr) return nullptr;
 
-    auto size_word = get::size(ptr, " ");
+    // auto size_word = get::size(ptr, " ");
 
-    pointer.move(size_word + get::size((char *) delimiters));
+    // pointer.move(size_word + get::size((char *) delimiters));
 
-    return ptr;
+    // return ptr;
 }
 
 }; /* namespace: stream */

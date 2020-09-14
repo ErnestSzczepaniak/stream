@@ -20,14 +20,12 @@ public:
     Stream();
     ~Stream();
 
-
     Stream & reset();
 
     Stream & name(const char * value);
     const char * name();
 
     char * buffer();
-    int size();
     int size_actual();
 
     Stream & operator=(Stream & other);

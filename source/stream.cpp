@@ -15,11 +15,6 @@ char * Stream::buffer()
     return _buffer;
 }
 
-int Stream::size()
-{
-    return size_buffer;
-}
-
 int Stream::size_actual()
 {
     return tools::string::get::size(_buffer);
@@ -27,8 +22,8 @@ int Stream::size_actual()
 
 Stream & Stream::reset()
 {
-    output.pointer.move_start();
-    input.pointer.move_start();
+    output.pointer.reset();
+    input.pointer.reset();
 
     memset(_buffer, 0, size_buffer);
 
