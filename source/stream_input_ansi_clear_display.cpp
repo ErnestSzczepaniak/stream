@@ -1,6 +1,6 @@
-#include "stream_channel_input_ansi_clear_display.h"
+#include "stream_input_ansi_clear_display.h"
 
-namespace stream::channel::input::ansi::clear
+namespace stream::input::ansi::clear
 {
 
 Display::Display(Pointer & pointer) : _pointer(pointer)
@@ -34,4 +34,4 @@ Display & Display::entire()
     return *this;
 }
 
-}; /* namespace: stream::channel::input::ansi::clear */
+}; /* namespace: stream::input::ansi::clear */

@@ -1,7 +1,7 @@
-#include "stream_channel_output.h"
+#include "stream_output.h"
 #include "tools_string.h"
 
-namespace stream::channel
+namespace stream
 {
 
 Output::Output(char * buffer, int size) : pointer(buffer, size)
@@ -23,8 +23,9 @@ char Output::character(int word, const char * delimiters)
 
 char * Output::word(int word, const char * delimiters)
 {
-    
+    return nullptr;
 }
 
+}; /* namespace: stream */
 
-}; /* namespace: stream::channel */
+

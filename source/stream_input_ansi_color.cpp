@@ -1,6 +1,6 @@
-#include "stream_channel_input_ansi_color.h"
+#include "stream_input_ansi_color.h"
 
-namespace stream::channel::input::ansi
+namespace stream::input::ansi
 {
 
 Color::Color(Pointer & pointer) : _pointer(pointer)
@@ -27,4 +27,4 @@ Color & Color::background(int r, int g, int b)
     return *this;
 }
 
-}; /* namespace: stream::channel::input::ansi */
+}; /* namespace: stream::input::ansi */

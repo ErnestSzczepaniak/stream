@@ -1,6 +1,6 @@
-#include "stream_channel_input_ansi.h"
+#include "stream_input_ansi.h"
 
-namespace stream::channel::input
+namespace stream::input
 {
 
 Ansi::Ansi(Pointer & pointer) 
@@ -50,5 +50,4 @@ Ansi & Ansi::maximize()
     return *this;
 }
 
-
-}; /* namespace: stream::channel::input */
+}; /* namespace: stream:::input */

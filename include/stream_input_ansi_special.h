@@ -1,8 +1,8 @@
-#ifndef _stream_channel_input_ansi_special_h
-#define _stream_channel_input_ansi_special_h
+#ifndef _stream_input_ansi_special_h
+#define _stream_input_ansi_special_h
 
 /**
- * @file	stream_channel_input_ansi_special.h
+ * @file	stream_input_ansi_special.h
  * @author	en2
  * @date	08-09-2020
  * @brief	
@@ -11,7 +11,7 @@
 
 #include "stream_pointer.h"
 
-namespace stream::channel::input::ansi
+namespace stream::input::ansi
 {
 
 class Special
@@ -33,8 +33,7 @@ private:
 
 }; /* class: Special */
 
+}; /* namespace: stream::input::ansi */
 
-}; /* namespace: stream::channel::input::ansi */
 
-
-#endif /* define: stream_channel_input_ansi_special_h */
+#endif /* define: stream_input_ansi_special_h */

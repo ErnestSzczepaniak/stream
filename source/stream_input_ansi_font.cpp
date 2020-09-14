@@ -1,6 +1,6 @@
-#include "stream_channel_input_ansi_font.h"
+#include "stream_input_ansi_font.h"
 
-namespace stream::channel::input::ansi
+namespace stream::input::ansi
 {
 
 Font::Font(Pointer & pointer) : _pointer(pointer)
@@ -84,4 +84,4 @@ Font & Font::reset()
     return *this;
 }
 
-}; /* namespace: stream::channel::input::ansi */
+}; /* namespace: stream::input::ansi */

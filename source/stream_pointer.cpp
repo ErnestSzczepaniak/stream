@@ -85,4 +85,13 @@ Pointer & Pointer::move(int value)
     return *this;
 }
 
+Pointer & Pointer::operator=(Pointer & other)
+{
+    _current = other._current;
+    _size = other._size;
+    _start = other._start;
+
+    return *this;
+}
+
 }; /* namespace: stream */

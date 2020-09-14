@@ -1,10 +1,10 @@
-#ifndef _stream_channel_output_h
-#define _stream_channel_output_h
+#ifndef _stream_output_h
+#define _stream_output_h
 
 /**
- * @file	stream_channel_output.h
+ * @file	stream_output.h
  * @author	en2
- * @date	17-08-2020
+ * @date	14-09-2020
  * @brief	
  * @details	
 **/
@@ -14,7 +14,7 @@
 #include <type_traits>
 #include "stream_pointer.h"
 
-namespace stream::channel
+namespace stream
 {
 
 class Output
@@ -58,9 +58,7 @@ T Output::floating(int word, const char * delimiters)
     return strtof(ptr, nullptr);
 }
 
-}; /* namespace: stream::channel */
+}; /* namespace: stream */
 
 
-
-
-#endif /* define: stream_channel_output_h */
+#endif /* define: stream_output_h */

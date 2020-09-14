@@ -1,8 +1,8 @@
-#ifndef _stream_channel_input_ansi_color_h
-#define _stream_channel_input_ansi_color_h
+#ifndef _stream_input_ansi_color_h
+#define _stream_input_ansi_color_h
 
 /**
- * @file	stream_channel_input_ansi_color.h
+ * @file	stream_input_ansi_color.h
  * @author	en2
  * @date	08-09-2020
  * @brief	
@@ -11,7 +11,7 @@
 
 #include "stream_pointer.h"
 
-namespace stream::channel::input::ansi
+namespace stream::input::ansi
 {
 
 class Color
@@ -28,8 +28,6 @@ private:
 
 }; /* class: Color */
 
+}; /* namespace: stream::input::ansi */
 
-}; /* namespace: stream::channel::input::ansi */
-
-
-#endif /* define: stream_channel_input_ansi_color_h */
+#endif /* define: stream_input_ansi_color_h */

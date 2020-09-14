@@ -1,8 +1,8 @@
-#ifndef _stream_channel_input_ansi_font_h
-#define _stream_channel_input_ansi_font_h
+#ifndef _stream_input_ansi_font_h
+#define _stream_input_ansi_font_h
 
 /**
- * @file	stream_channel_input_ansi_font.h
+ * @file	stream_input_ansi_font.h
  * @author	en2
  * @date	08-09-2020
  * @brief	
@@ -11,7 +11,7 @@
 
 #include "stream_pointer.h"
 
-namespace stream::channel::input::ansi
+namespace stream::input::ansi
 {
 
 class Font
@@ -35,6 +35,6 @@ private:
 
 }; /* class: Font */
 
-}; /* namespace: stream::channel::input::ansi */
+}; /* namespace: stream::input::ansi */
 
-#endif /* define: stream_channel_input_ansi_font_h */
+#endif /* define: stream_input_ansi_font_h */

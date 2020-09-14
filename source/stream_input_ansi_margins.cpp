@@ -1,6 +1,6 @@
-#include "stream_channel_input_ansi_margins.h"
+#include "stream_input_ansi_margins.h"
 
-namespace stream::channel::input::ansi
+namespace stream::input::ansi
 {
 
 Margins::Margins(Pointer & pointer) : _pointer(pointer)
@@ -27,4 +27,4 @@ Margins & Margins::vertical(int from, int to)
     return *this;
 }
 
-}; /* namespace: stream::channel::input::ansi */
+}; /* namespace: stream::input::ansi */

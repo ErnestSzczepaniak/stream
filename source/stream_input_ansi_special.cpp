@@ -1,6 +1,6 @@
-#include "stream_channel_input_ansi_special.h"
+#include "stream_input_ansi_special.h"
 
-namespace stream::channel::input::ansi
+namespace stream::input::ansi
 {
 
 Special::Special(Pointer & pointer) : _pointer(pointer)
@@ -62,4 +62,4 @@ Special & Special::f()
     return *this;
 }
 
-}; /* namespace: stream::channel::input::Special */
+}; /* namespace: stream::input::ansi */

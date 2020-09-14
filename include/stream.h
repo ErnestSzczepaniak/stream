@@ -9,39 +9,35 @@
  * @details	
 **/
 
-#include "stream_generic.h"
+#include "stream_output.h"
+#include "stream_input.h"
 
-template<int channels>
-class Stream : public Stream_generic
+class Stream
 {
-public:
-    Stream()
-    {
-        for (int i = 0; i < channels; i++)
-        {
-            _channel[i].reset();
-        }
-        
-    }
+    static constexpr auto size_buffer = 1024;
 
+public:
+    Stream();
+    ~Stream();
+
+
+    Stream & reset();
+
+    Stream & name(const char * value);
+    const char * name();
+
+    char * buffer();
     int size();
-    stream::Channel * channel(int index = 0);
+    int size_actual();
+
+    Stream & operator=(Stream & other);
+
+    stream::Output output;
+    stream::Input input;
 
 private:
-    stream::Channel _channel[channels];
-
+    char _buffer[size_buffer];
+    const char * _name = nullptr;
 }; /* class: Stream */
-
-template<int channels>
-int Stream<channels>::size()
-{
-    return channels;
-}
-
-template<int channels>
-stream::Channel * Stream<channels>::channel(int index)
-{
-    return (index < channels) ? &_channel[index] : nullptr;
-}
 
 #endif /* define: stream_h */

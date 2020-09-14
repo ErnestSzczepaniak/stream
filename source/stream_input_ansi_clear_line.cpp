@@ -1,6 +1,6 @@
-#include "stream_channel_input_ansi_clear_line.h"
+#include "stream_input_ansi_clear_line.h"
 
-namespace stream::channel::input::ansi::clear
+namespace stream::input::ansi::clear
 {
 
 Line::Line(Pointer & pointer) : _pointer(pointer)
@@ -35,4 +35,4 @@ Line & Line::entire()
 }
 
 
-}; /* namespace: stream::channel::input::ansi::clear */
+}; /* namespace: stream::input::ansi::clear */

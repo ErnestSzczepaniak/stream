@@ -1,6 +1,6 @@
-#include "stream_channel_input_ansi_cursor.h"
+#include "stream_input_ansi_cursor.h"
 
-namespace stream::channel::input::ansi
+namespace stream::input::ansi
 {
 
 Cursor::Cursor(Pointer & pointer) : _pointer(pointer), move(pointer)
@@ -41,6 +41,6 @@ Cursor & Cursor::hide()
     return *this;
 }
 
-}; /* namespace: stream::channel::input::ansi */
+}; /* namespace: stream::input::ansi */
 
 

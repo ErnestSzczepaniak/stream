@@ -1,6 +1,6 @@
-#include "stream_channel_input_ansi_cursor_move.h"
+#include "stream_input_ansi_cursor_move.h"
 
-namespace stream::channel::input::ansi::cursor
+namespace stream::input::ansi::cursor
 {
 
 Move::Move(Pointer & pointer) : _pointer(pointer)
@@ -76,4 +76,4 @@ Move & Move::at(int x, int y)
     return *this;
 }
 
-}; /* namespace: stream::channel::input::ansi::cursor */
+}; /* namespace: stream::input::ansi::cursor */

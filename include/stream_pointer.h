@@ -46,6 +46,8 @@ public:
     Pointer & move_end();
     Pointer & move(int value);
 
+    Pointer & operator=(Pointer & other);
+
 private:
     char * _start;
     char * _current;
@@ -88,5 +90,6 @@ static inline char * pointer_output(Pointer & pointer, int word, const char * de
 }
 
 }; /* namespace: stream */
+
 
 #endif /* define: stream_pointer_h */

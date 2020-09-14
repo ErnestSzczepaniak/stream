@@ -1,21 +1,18 @@
-#ifndef _Input_h
-#define _Input_h
+#ifndef _stream_input_h
+#define _stream_input_h
 
 /**
- * @file	Input.h
+ * @file	stream_input.h
  * @author	en2
- * @date	18-08-2020
+ * @date	14-09-2020
  * @brief	
  * @details	
 **/
 
-#include "stdio.h"
-#include "string.h"
-#include "tools_string.h"
 #include "stream_pointer.h"
-#include "stream_channel_input_ansi.h"
+#include "stream_input_ansi.h"
 
-namespace stream::channel
+namespace stream
 {
 
 class Input
@@ -64,6 +61,6 @@ Input & Input::floating(T value, int digits, const char * delimiters)
     return format("%.*f%s", digits, value, delimiters);
 }
 
-}; /* namespace: stream::channel */
+}; /* namespace: stream */
 
-#endif /* define: Input_h */
+#endif /* define: stream_input_h */

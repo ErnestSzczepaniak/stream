@@ -1,6 +1,6 @@
-#include "stream_channel_input_ansi_scroll.h"
+#include "stream_input_ansi_scroll.h"
 
-namespace stream::channel::input::ansi
+namespace stream::input::ansi
 {
 
 Scroll::Scroll(Pointer & pointer) : _pointer(pointer)
@@ -27,4 +27,4 @@ Scroll & Scroll::down()
     return *this;
 }
 
-}; /* namespace: stream::channel::input::ansi */
+}; /* namespace: stream::input::ansi */
