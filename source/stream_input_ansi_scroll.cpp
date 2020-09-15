@@ -15,14 +15,14 @@ Scroll::~Scroll()
 
 Scroll & Scroll::up()
 {
-    pointer_input(_pointer, "%s", "\eD");
+    Pointer::input(_pointer, "%s", "\eD");
 
     return *this;
 }
 
 Scroll & Scroll::down()
 {
-    pointer_input(_pointer, "%s", "\eM");
+    Pointer::input(_pointer, "%s", "\eM");
 
     return *this;
 }

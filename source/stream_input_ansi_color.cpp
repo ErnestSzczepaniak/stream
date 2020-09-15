@@ -15,14 +15,14 @@ Color::~Color()
 
 Color & Color::foreground(int r, int g, int b)
 {
-    pointer_input(_pointer, "\e[38;2;%d;%d;%dm", r, g, b);
+    Pointer::input(_pointer, "\e[38;2;%d;%d;%dm", r, g, b);
 
     return *this;
 }   
 
 Color & Color::background(int r, int g, int b)
 {
-    pointer_input(_pointer, "\e[48;2;%d;%d;%dm", r, g, b);
+    Pointer::input(_pointer, "\e[48;2;%d;%d;%dm", r, g, b);
 
     return *this;
 }

@@ -10,12 +10,20 @@ void show_string(char * string)
 
 TEST_CASE("asd")
 {
-    char test[48];
-    
-    stream::Pointer p(test, 48);
+    Stream s;
 
-    p += 47;
 
-    p++;
+    s.input.format("%s", "asd");
+    s.input.format("%d", 4);
+
+    s.input.align_left();
+
+    auto b = s.input.is_aligned();
+
+    s.input.format("%d", 4);
+
+    s.input.align_right();
+
+    s.input.format("%d", 8);
 
 }

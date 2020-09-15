@@ -9,13 +9,13 @@
  * @details	
 **/
 
-#include "stream_pointer.h"
+#include "stream_channel.h"
 #include "stream_input_ansi.h"
 
 namespace stream
 {
 
-class Input
+class Input : public Channel
 {
 public:
     Input(char * buffer, int size);
@@ -29,16 +29,16 @@ public:
 
     Input & character(char value, const char * delimiters = " ");
     Input & word(char * value, const char * delimiters = " ");
+    Input & text(char * value, const char * delimiters = "");
 
-    Pointer pointer;
     input::Ansi ansi;
-
+    
 }; /* class: Input */
 
 template<typename ... Args>
 Input & Input::format(const char * format, Args ... args)
 {
-    pointer_input(pointer, format, args...);
+    Pointer::input(pointer, format, args...);
 
     return *this;
 }
@@ -46,19 +46,25 @@ Input & Input::format(const char * format, Args ... args)
 template<typename T> 
 Input & Input::decimal(T value, const char * delimiters)
 {
-    return format("%d%s", value, delimiters);
+    Pointer::input(pointer, "%d%s", value, delimiters);
+
+    return *this;
 }
 
 template<typename T> 
 Input & Input::hexadecimal(T value, int digits, const char * delimiters)
 {
-    return format("0x%0*x%s", digits, value, delimiters);
+    Pointer::input(pointer, "0x%0*x%s", digits, value, delimiters);
+
+    return *this;
 }
 
 template<typename T>
 Input & Input::floating(T value, int digits, const char * delimiters)
 {
-    return format("%.*f%s", digits, value, delimiters);
+    Pointer::input(pointer, "%.*f%s", digits, value, delimiters);
+
+    return *this;
 }
 
 }; /* namespace: stream */

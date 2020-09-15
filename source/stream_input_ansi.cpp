@@ -24,28 +24,28 @@ Ansi::~Ansi()
 
 Ansi & Ansi::reset()
 {
-    pointer_input(_pointer, "%s", "\ec");
+    Pointer::input(_pointer, "%s", "\ec");
 
     return *this;
 }
 
 Ansi & Ansi::size(int x, int y) 
 {
-    pointer_input(_pointer, "\e[8;%d;%dt", y, x);
+    Pointer::input(_pointer, "\e[8;%d;%dt", y, x);
 
     return *this;
 }
 
 Ansi & Ansi::minimize()
 {
-    pointer_input(_pointer, "%s", "\e[2t");
+    Pointer::input(_pointer, "%s", "\e[2t");
 
     return *this;
 }
 
 Ansi & Ansi::maximize()
 {
-    pointer_input(_pointer, "%s", "\e[1t");
+    Pointer::input(_pointer, "%s", "\e[1t");
 
     return *this;
 }

@@ -2,7 +2,7 @@
 
 Stream::Stream() : output(_buffer, size_buffer), input(_buffer, size_buffer)
 {
-
+    reset();
 }
 
 Stream::~Stream()

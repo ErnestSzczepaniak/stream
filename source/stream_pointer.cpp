@@ -82,6 +82,21 @@ Pointer & Pointer::operator=(Pointer & other)
     return *this;
 }
 
+char * Pointer::output(Pointer & pointer, int word, const char * delimiters)
+{
+    using namespace tools::string;
+
+    auto * ptr = get::word(pointer, word, delimiters);
+
+    if (ptr == nullptr) return nullptr;
+
+    auto size_word = get::size(ptr, " ");
+
+    pointer += (size_word + get::size((char *) delimiters));
+
+    return ptr;
+}
+
 /* ---------------------------------------------| info |--------------------------------------------- */
 
 Pointer & Pointer::_move(int value)

@@ -12,12 +12,12 @@
 #include "tools_string.h"
 #include <string>
 #include <type_traits>
-#include "stream_pointer.h"
+#include "stream_channel.h"
 
 namespace stream
 {
 
-class Output
+class Output : public Channel
 {
 public:
     Output(char * buffer, int size);
@@ -30,14 +30,12 @@ public:
     char character(int word = 0, const char * delimiters = " ");
     char * word(int word = 0, const char * delimiters = " ");
 
-    Pointer pointer;
-
 }; /* class: Stream_channel_output */
 
 template<typename T>
 T Output::decimal(int word, const char * delimiters)
 {
-    auto * ptr = pointer_output(pointer, word, delimiters);
+    auto * ptr = Pointer::output(pointer, word, delimiters);
 
     return strtol(ptr, nullptr, 10);
 }
@@ -45,7 +43,7 @@ T Output::decimal(int word, const char * delimiters)
 template<typename T>
 T Output::hexadecimal(int word, const char * delimiters)
 {
-    auto * ptr = pointer_output(pointer, word, delimiters);
+    auto * ptr = Pointer::output(pointer, word, delimiters);
 
     return strtol(ptr, nullptr, 16);
 }
@@ -53,7 +51,7 @@ T Output::hexadecimal(int word, const char * delimiters)
 template<typename T>
 T Output::floating(int word, const char * delimiters)
 {
-    auto * ptr = pointer_output(pointer, word, delimiters);
+    auto * ptr = Pointer::output(pointer, word, delimiters);
 
     return strtof(ptr, nullptr);
 }

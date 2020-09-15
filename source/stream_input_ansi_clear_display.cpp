@@ -15,21 +15,21 @@ Display::~Display()
 
 Display & Display::right()
 {
-    pointer_input(_pointer, "%s", "\e[J");
+    Pointer::input(_pointer, "%s", "\e[J");
 
     return *this;
 }
 
 Display & Display::left()
 {
-    pointer_input(_pointer, "%s", "\e[1J");
+    Pointer::input(_pointer, "%s", "\e[1J");
 
     return *this;
 }
 
 Display & Display::entire()
 {
-    pointer_input(_pointer, "%s", "\e[2J");
+    Pointer::input(_pointer, "%s", "\e[2J");
 
     return *this;
 }

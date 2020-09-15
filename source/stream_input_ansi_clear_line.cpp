@@ -15,21 +15,21 @@ Line::~Line()
 
 Line & Line::right()
 {
-    pointer_input(_pointer, "%s", "\e[K");
+    Pointer::input(_pointer, "%s", "\e[K");
 
     return *this;
 }
 
 Line & Line::left()
 {
-    pointer_input(_pointer, "%s", "\e[1K");
+    Pointer::input(_pointer, "%s", "\e[1K");
 
     return *this;
 }
 
 Line & Line::entire()
 {
-    pointer_input(_pointer, "%s", "\e[2K");
+    Pointer::input(_pointer, "%s", "\e[2K");
 
     return *this;
 }

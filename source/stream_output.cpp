@@ -4,7 +4,7 @@
 namespace stream
 {
 
-Output::Output(char * buffer, int size) : pointer(buffer, size)
+Output::Output(char * buffer, int size) : Channel(buffer, size)
 {
 
 }
@@ -16,7 +16,7 @@ Output::~Output()
 
 char Output::character(int word, const char * delimiters)
 {
-    auto * ptr = pointer_output(pointer, word, delimiters);
+    auto * ptr = Pointer::output(pointer, word, delimiters);
 
     return *ptr;
 }

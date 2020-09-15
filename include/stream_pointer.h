@@ -47,6 +47,10 @@ public:
     Pointer & operator=(char * value);
     Pointer & operator=(Pointer & other);
 
+    template<typename ...Args>
+    static void input(Pointer & pointer, const char * format, Args ... args);
+    static char * output(Pointer & pointer, int word, const char * delimiters);
+
 protected:
     Pointer & _move(int value);
 
@@ -58,37 +62,22 @@ private:
 }; /* class: Stream_pointer */
 
 template<typename ...Args>
-static inline void pointer_input(Pointer & pointer, const char * format, Args ... args)
+void Pointer::input(Pointer & pointer, const char * format, Args ... args)
 {
-    // using namespace tools::string;
+    using namespace tools::string;
 
-    // int size;
+    int size;
 
-    // if (*pointer != 0)
-    // {
-    //     size = insert::preppend::format(pointer.current(), pointer.size_stop(), format, args...);
-    // }
-    // else
-    // {
-    //     size = insert::append::format(pointer.start(), pointer.size_stop(), format, args...);
-    // }
+    if (*pointer != 0)
+    {
+        size = insert::preppend::format(pointer, pointer._size - (pointer - pointer._start), format, args...);
+    }
+    else
+    {
+        size = insert::append::format(pointer, pointer._size - (pointer - pointer._start), format, args...);
+    }
 
-    // if (size > 0) pointer.move(size);
-}
-
-static inline char * pointer_output(Pointer & pointer, int word, const char * delimiters)
-{
-    // using namespace tools::string;
-
-    // auto * ptr = get::word(pointer.current(), word, delimiters);
-
-    // if (ptr == nullptr) return nullptr;
-
-    // auto size_word = get::size(ptr, " ");
-
-    // pointer.move(size_word + get::size((char *) delimiters));
-
-    // return ptr;
+    if (size > 0) pointer += size;
 }
 
 }; /* namespace: stream */

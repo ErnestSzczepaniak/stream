@@ -15,14 +15,14 @@ Margins::~Margins()
 
 Margins & Margins::horizontal(int from, int to)
 {
-    pointer_input(_pointer, "\e[%d;%dr", from + 1, to + 1);
+    Pointer::input(_pointer, "\e[%d;%dr", from + 1, to + 1);
 
     return *this;
 }
 
 Margins & Margins::vertical(int from, int to)
 {
-    pointer_input(_pointer, "\e[?69h\e[%d;%ds", from + 1, to + 1);
+    Pointer::input(_pointer, "\e[?69h\e[%d;%ds", from + 1, to + 1);
 
     return *this;
 }
