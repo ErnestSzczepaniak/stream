@@ -1,6 +1,6 @@
 #include "stream.h"
 
-Stream::Stream() : output(_buffer, size_buffer), input(_buffer, size_buffer)
+Stream::Stream() : output(buffer, size_buffer), input(buffer, size_buffer)
 {
     reset();
 }
@@ -10,14 +10,14 @@ Stream::~Stream()
 
 }
 
-char * Stream::buffer()
+int Stream::size_max()
 {
-    return _buffer;
+    return size_buffer;
 }
 
 int Stream::size_actual()
 {
-    return tools::string::get::size(_buffer);
+    return tools::string::get::size(buffer);
 }
 
 Stream & Stream::reset()
@@ -25,21 +25,9 @@ Stream & Stream::reset()
     output.pointer.reset();
     input.pointer.reset();
 
-    memset(_buffer, 0, size_buffer);
+    memset(buffer, 0, size_buffer);
 
     return *this;
-}
-
-Stream & Stream::name(const char * value)
-{
-    _name = value;
-    
-    return *this;
-}
-
-const char * Stream::name()
-{
-    return _name;
 }
 
 Stream & Stream::operator=(Stream & other)
@@ -47,7 +35,17 @@ Stream & Stream::operator=(Stream & other)
     input.pointer = other.input.pointer;
     output.pointer = other.output.pointer;
 
-    memcpy(_buffer, other._buffer, other.size_actual());
+    memcpy(buffer, other.buffer, size_buffer);
 
     return *this;
+}
+
+bool Stream::operator==(Stream & other)
+{
+    return tools::string::compare::equality(buffer, other.buffer);
+}
+
+bool Stream::operator!=(Stream & other)
+{
+    return !(*this == other);
 }

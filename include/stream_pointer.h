@@ -30,10 +30,10 @@ public:
     Pointer(char * start, int size);
     ~Pointer();
 
+    Pointer & reset();
+
     Pointer & position(int value);
     int position();
-
-    Pointer & reset();
 
     operator char *();
     char operator*();

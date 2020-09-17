@@ -14,28 +14,25 @@
 
 class Stream
 {
-    static constexpr auto size_buffer = 1024;
+    static constexpr auto size_buffer = 64;
 
 public:
     Stream();
     ~Stream();
 
+    int size_max();
+    int size_actual();
+    
     Stream & reset();
 
-    Stream & name(const char * value);
-    const char * name();
-
-    char * buffer();
-    int size_actual();
-
     Stream & operator=(Stream & other);
+    bool operator==(Stream & other);
+    bool operator!=(Stream & other);
 
     stream::Output output;
     stream::Input input;
+    char buffer[size_buffer];
 
-private:
-    char _buffer[size_buffer];
-    const char * _name = nullptr;
 }; /* class: Stream */
 
 #endif /* define: stream_h */

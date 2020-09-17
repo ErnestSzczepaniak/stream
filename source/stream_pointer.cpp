@@ -17,6 +17,13 @@ Pointer::~Pointer()
 
 }
 
+Pointer & Pointer::reset()
+{
+    _current = _start;
+
+    return *this;
+}
+
 Pointer & Pointer::position(int value)
 {
     if (value >= 0 && value < _size) _current = _start + value;
@@ -27,13 +34,6 @@ Pointer & Pointer::position(int value)
 int Pointer::position()
 {
     return (_current - _start);
-}
-
-Pointer & Pointer::reset()
-{
-    _current = _start;
-
-    return *this;
 }
 
 Pointer::operator char *()
@@ -75,9 +75,7 @@ Pointer & Pointer::operator=(char * value)
 
 Pointer & Pointer::operator=(Pointer & other)
 {
-    _current = other._current;
-    _size = other._size;
-    _start = other._start;
+    position(other.position());
 
     return *this;
 }

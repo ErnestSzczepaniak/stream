@@ -8,22 +8,20 @@ void show_string(char * string)
     printf("\r\n");
 }
 
+
+
 TEST_CASE("asd")
 {
     Stream s;
 
 
-    s.input.format("%s", "asd");
-    s.input.format("%d", 4);
+    s.input.format("%s", "q1 q2 q3");
 
-    s.input.align_left();
+    auto pos = s.input.pointer.position();
 
-    auto b = s.input.is_aligned();
 
-    s.input.format("%d", 4);
+    
 
-    s.input.align_right();
-
-    s.input.format("%d", 8);
+    auto p = s.input.pointer.position();
 
 }

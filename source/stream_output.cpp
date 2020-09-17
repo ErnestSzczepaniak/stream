@@ -23,7 +23,9 @@ char Output::character(int word, const char * delimiters)
 
 char * Output::word(int word, const char * delimiters)
 {
-    return nullptr;
+    auto * ptr = Pointer::output(pointer, word, delimiters);
+
+    return ptr;
 }
 
 }; /* namespace: stream */

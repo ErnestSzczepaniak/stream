@@ -20,12 +20,12 @@ public:
     Channel(char * buffer, int size);
     ~Channel();
 
-    int offset_left();
-    int offset_right();
+    int offset_home();
+    int offset_end();
 
     bool is_aligned();
-    Channel & align_left();
-    Channel & align_right();
+    Channel & align_home();
+    Channel & align_end();
 
     Pointer pointer;
 

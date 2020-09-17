@@ -13,12 +13,12 @@ Channel::~Channel()
 
 }
 
-int Channel::offset_left()
+int Channel::offset_home()
 {
     return pointer.position();
 }
 
-int Channel::offset_right()
+int Channel::offset_end()
 {
     return tools::string::get::size(pointer);
 }
@@ -28,16 +28,16 @@ bool Channel::is_aligned()
     return (*pointer == 0);
 }
 
-Channel & Channel::align_left()
+Channel & Channel::align_home()
 {
     pointer.reset();
 
     return *this;
 }
 
-Channel & Channel::align_right()
+Channel & Channel::align_end()
 {
-    pointer += offset_right();
+    pointer += offset_end();
 
     return *this;
 }
