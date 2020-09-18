@@ -14,7 +14,7 @@
 
 class Stream
 {
-    static constexpr auto size_buffer = 64;
+    static constexpr auto size_buffer = 4096;
 
 public:
     Stream();
