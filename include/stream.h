@@ -11,6 +11,7 @@
 
 #include "stream_output.h"
 #include "stream_input.h"
+#include "stream_find.h"
 
 class Stream
 {
@@ -31,6 +32,8 @@ public:
 
     stream::Output output;
     stream::Input input;
+    stream::Find find;
+    
     char buffer[size_buffer];
 
 }; /* class: Stream */

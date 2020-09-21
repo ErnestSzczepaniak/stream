@@ -1,6 +1,6 @@
 #include "stream.h"
 
-Stream::Stream() : output(buffer, size_buffer), input(buffer, size_buffer)
+Stream::Stream() : output(buffer, size_buffer), input(buffer, size_buffer), find(buffer, size_buffer)
 {
     reset();
 }
@@ -24,6 +24,7 @@ Stream & Stream::reset()
 {
     output.pointer.reset();
     input.pointer.reset();
+    find.pointer.reset();
 
     memset(buffer, 0, size_buffer);
 
