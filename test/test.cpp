@@ -15,13 +15,9 @@ TEST_CASE("asd")
 
     //stream::channel::action:: action(nullptr, 2);
 
-    s.output.set.decimal(10).decimal(430);
+    s.input.set.text("w1 10 20 30 | w2");
 
-    s.flush();
-
-
-    auto w = s.input.get.decimal();
-    w = s.input.get.decimal();
+    auto * w = s.input.get.text("|");
 
 
 }

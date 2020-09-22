@@ -98,15 +98,13 @@ Pointer & Pointer::operator=(Pointer & other)
     return *this;
 }
 
-char * Pointer::output(int word, const char * delimiters)
+char * Pointer::output(const char * delimiters)
 {
-    auto * ptr = tools::string::get::word(_current, word, delimiters);
+    auto size = tools::string::get::size(_current, delimiters);
 
-    if (ptr == nullptr) return nullptr;
+    auto * ptr = _current;
 
-    auto size_word = tools::string::get::size(ptr, " ");
-
-    _current += (size_word + tools::string::get::size((char *) delimiters));
+    _current += (size + strlen(delimiters));
 
     return ptr;
 }

@@ -29,7 +29,7 @@ public:
 
     Set & character(char value, const char * delimiters = " ");
     Set & word(char * value, const char * delimiters = " ");
-    Set & text(char * value, const char * delimiters = " ");
+    Set & text(char * value, const char * delimiters = "\0");
 
     Pointer pointer;
     set::Ansi ansi;

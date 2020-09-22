@@ -13,18 +13,20 @@ Get::~Get()
 
 }
 
-char Get::character(int word, const char * delimiters)
+char Get::character(const char * delimiters)
 {
-    auto * ptr = pointer.output(word, delimiters);
-
-    return *ptr;
+    return *pointer.output(delimiters);
 }
 
-char * Get::word(int word, const char * delimiters)
+char * Get::word(const char * delimiters)
 {
-    auto * ptr = pointer.output(word, delimiters);
-
-    return ptr;
+    return pointer.output(delimiters);
 }
+
+char * Get::text(const char * delimiters)
+{
+    return pointer.output(delimiters);
+}
+
 
 }; /* namespace: stream::channel::action */

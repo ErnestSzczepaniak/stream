@@ -22,14 +22,18 @@ Set & Set::character(char value, const char * delimiters)
 
 Set & Set::word(char * value, const char * delimiters)
 {
-    pointer.input("%s%s", value, delimiters);
+    auto size = tools::string::get::size(value, delimiters);
+
+    pointer.input("%.*s", size, value);
 
     return *this;
 }
 
 Set & Set::text(char * value, const char * delimiters)
 {
-    pointer.input("%s%s", value, delimiters);
+    auto size = tools::string::get::size(value, delimiters);
+
+    pointer.input("%.*s", size, value);
 
     return *this;
 }

@@ -43,7 +43,7 @@ public:
 
     template<typename ...Args>
     Pointer & input(const char * format, Args ... args);
-    char * output(int word, const char * delimiters);
+    char * output(const char * delimiters);
 
 protected:
     Pointer & _move(int value);
