@@ -1,17 +1,17 @@
-#ifndef _stream_input_ansi_cursor_move_h
-#define _stream_input_ansi_cursor_move_h
+#ifndef _stream_channel_set_ansi_cursor_move_h
+#define _stream_channel_set_ansi_cursor_move_h
 
 /**
- * @file	stream_input_ansi_cursor_move.h
+ * @file	stream_channel_set_ansi_cursor_move.h
  * @author	en2
- * @date	08-09-2020
+ * @date	22-09-2020
  * @brief	
  * @details	
 **/
 
-#include "stream_pointer.h"
+#include "stream_channel_pointer.h"
 
-namespace stream::input::ansi::cursor
+namespace stream::channel::set::ansi::cursor
 {
 
 class Move
@@ -35,6 +35,6 @@ private:
 
 }; /* class: Move */
 
-}; /* namespace: stream::input::ansi::cursor */
+}; /* namespace: stream::channel::set::ansi::cursor */
 
-#endif /* define: stream_input_ansi_cursor_move_h */
+#endif /* define: stream_channel_set_ansi_cursor_move_h */

@@ -4,34 +4,36 @@
 /**
  * @file	stream_channel.h
  * @author	en2
- * @date	15-09-2020
+ * @date	22-09-2020
  * @brief	
  * @details	
 **/
 
-#include "stream_pointer.h"
+#include "stream_channel_set.h"
+#include "stream_channel_get.h"
 
 namespace stream
 {
 
 class Channel
 {
+    static constexpr auto size_buffer = 4096;
+
 public:
-    Channel(char * buffer, int size);
+    Channel();
     ~Channel();
 
-    int offset_home();
-    int offset_end();
+    Channel & reset();
 
-    bool is_aligned();
-    Channel & align_home();
-    Channel & align_end();
+    int size_max();
+    int size_actual();
 
-    Pointer pointer;
+    Channel & operator=(Channel & other);
 
-private:
-    char * _buffer;
-    int _size;
+    channel::Set set;
+    channel::Get get;
+
+    char buffer[size_buffer];
 
 }; /* class: Channel */
 

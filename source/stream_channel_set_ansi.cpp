@@ -1,6 +1,6 @@
-#include "stream_input_ansi.h"
+#include "stream_channel_set_ansi.h"
 
-namespace stream::input
+namespace stream::channel::set
 {
 
 Ansi::Ansi(Pointer & pointer) 
@@ -24,30 +24,30 @@ Ansi::~Ansi()
 
 Ansi & Ansi::reset()
 {
-    Pointer::input(_pointer, "%s", "\ec");
+    _pointer.input("%s", "\ec");
 
     return *this;
 }
 
 Ansi & Ansi::size(int x, int y) 
 {
-    Pointer::input(_pointer, "\e[8;%d;%dt", y, x);
+    _pointer.input("\e[8;%d;%dt", y, x);
 
     return *this;
 }
 
 Ansi & Ansi::minimize()
 {
-    Pointer::input(_pointer, "%s", "\e[2t");
+    _pointer.input("%s", "\e[2t");
 
     return *this;
 }
 
 Ansi & Ansi::maximize()
 {
-    Pointer::input(_pointer, "%s", "\e[1t");
+    _pointer.input("%s", "\e[1t");
 
     return *this;
 }
 
-}; /* namespace: stream:::input */
+}; /* namespace: stream:::channel::set */

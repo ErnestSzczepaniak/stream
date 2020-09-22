@@ -9,15 +9,15 @@
  * @details	
 **/
 
-#include "stream_input_ansi_clear.h"
-#include "stream_input_ansi_cursor.h"
-#include "stream_input_ansi_margins.h"
-#include "stream_input_ansi_scroll.h"
-#include "stream_input_ansi_font.h"
-#include "stream_input_ansi_color.h"
-#include "stream_input_ansi_special.h"
+#include "stream_channel_set_ansi_clear.h"
+#include "stream_channel_set_ansi_cursor.h"
+#include "stream_channel_set_ansi_margins.h"
+#include "stream_channel_set_ansi_scroll.h"
+#include "stream_channel_set_ansi_font.h"
+#include "stream_channel_set_ansi_color.h"
+#include "stream_channel_set_ansi_special.h"
 
-namespace stream::input
+namespace stream::channel::set
 {
 
 class Ansi

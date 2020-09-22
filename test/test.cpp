@@ -1,6 +1,5 @@
 #include "test.h"
 #include "stream.h"
-#include "stream_pointer.h"
 
 void show_string(char * string)
 {
@@ -14,8 +13,15 @@ TEST_CASE("asd")
 {
     Stream s;
 
-    s.input.text("program 1 | program 2");
+    //stream::channel::action:: action(nullptr, 2);
 
-    auto * pipe = s.find.word("| ");
+    s.output.set.decimal(10).decimal(430);
+
+    s.flush();
+
+
+    auto w = s.input.get.decimal();
+    w = s.input.get.decimal();
+
 
 }

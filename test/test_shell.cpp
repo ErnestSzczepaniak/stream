@@ -1,4 +1,4 @@
-#include "stream.h"
+//#include "stream.h"
 #include "test.h"
 #include <stdlib.h>
 #include <termios.h>
@@ -194,7 +194,7 @@ char get()
 
 TEST_CASE("shell")
 {
-    Stream s;
+    // Stream s;
 
 
     // auto rows = 2;

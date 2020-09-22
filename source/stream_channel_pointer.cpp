@@ -1,6 +1,7 @@
-#include "stream_pointer.h"
+#include "stream_channel_pointer.h"
+#include "tools_string.h"
 
-namespace stream
+namespace stream::channel
 {
 
 Pointer::Pointer(char * start, int size)
@@ -20,6 +21,23 @@ Pointer::~Pointer()
 Pointer & Pointer::reset()
 {
     _current = _start;
+
+    return *this;
+}
+
+int Pointer::offset_end()
+{
+    return tools::string::get::size(_current);
+}
+
+bool Pointer::is_aligned()
+{
+    return (*_current == 0);
+}
+
+Pointer & Pointer::align_end()
+{
+    _current += offset_end();
 
     return *this;
 }
@@ -80,17 +98,15 @@ Pointer & Pointer::operator=(Pointer & other)
     return *this;
 }
 
-char * Pointer::output(Pointer & pointer, int word, const char * delimiters)
+char * Pointer::output(int word, const char * delimiters)
 {
-    using namespace tools::string;
-
-    auto * ptr = get::word(pointer, word, delimiters);
+    auto * ptr = tools::string::get::word(_current, word, delimiters);
 
     if (ptr == nullptr) return nullptr;
 
-    auto size_word = get::size(ptr, " ");
+    auto size_word = tools::string::get::size(ptr, " ");
 
-    pointer += (size_word + get::size((char *) delimiters));
+    _current += (size_word + tools::string::get::size((char *) delimiters));
 
     return ptr;
 }
@@ -105,4 +121,4 @@ Pointer & Pointer::_move(int value)
 }
 
 
-}; /* namespace: stream */
+}; /* namespace: stream::channel::action */

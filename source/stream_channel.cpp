@@ -1,9 +1,10 @@
 #include "stream_channel.h"
+#include "tools_string.h"
 
 namespace stream
 {
 
-Channel::Channel(char * buffer, int size) : pointer(buffer, size), _buffer(buffer), _size(size)
+Channel::Channel() : set(buffer, size_buffer), get(buffer, size_buffer)
 {
 
 }
@@ -13,31 +14,32 @@ Channel::~Channel()
 
 }
 
-int Channel::offset_home()
+int Channel::size_max()
 {
-    return pointer.position();
+    return size_buffer;
 }
 
-int Channel::offset_end()
+int Channel::size_actual()
 {
-    return tools::string::get::size(pointer);
+    return tools::string::get::size(buffer);
 }
 
-bool Channel::is_aligned()
+Channel & Channel::reset()
 {
-    return (*pointer == 0);
-}
+    get.pointer.reset();
+    set.pointer.reset();
 
-Channel & Channel::align_home()
-{
-    pointer.reset();
+    memset(buffer, 0, size_buffer);
 
     return *this;
 }
 
-Channel & Channel::align_end()
+Channel & Channel::operator=(Channel & other)
 {
-    pointer += offset_end();
+    set.pointer = other.set.pointer;
+    get.pointer = other.get.pointer;
+
+    memcpy(buffer, other.buffer, size_buffer);
 
     return *this;
 }

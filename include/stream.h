@@ -4,37 +4,25 @@
 /**
  * @file	stream.h
  * @author	en2
- * @date	17-08-2020
+ * @date	22-09-2020
  * @brief	
  * @details	
 **/
 
-#include "stream_output.h"
-#include "stream_input.h"
-#include "stream_find.h"
+#include "stream_channel.h"
 
 class Stream
 {
-    static constexpr auto size_buffer = 4096;
-
 public:
     Stream();
     ~Stream();
 
-    int size_max();
-    int size_actual();
-    
     Stream & reset();
+    Stream & flush();
 
-    Stream & operator=(Stream & other);
-    bool operator==(Stream & other);
-    bool operator!=(Stream & other);
-
-    stream::Output output;
-    stream::Input input;
-    stream::Find find;
-    
-    char buffer[size_buffer];
+    stream::Channel input;
+    stream::Channel output;
+    stream::Channel error;
 
 }; /* class: Stream */
 
