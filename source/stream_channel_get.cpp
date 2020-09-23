@@ -3,7 +3,7 @@
 namespace stream::channel
 {
 
-Get::Get(char * buffer, int size) : pointer(buffer, size)
+Get::Get(char * start, char * stop) : pointer(start, stop)
 {
 
 }

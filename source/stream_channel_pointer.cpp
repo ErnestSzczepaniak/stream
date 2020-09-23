@@ -4,11 +4,7 @@
 namespace stream::channel
 {
 
-Pointer::Pointer(char * start, int size)
-:
-_start(start),
-_current(start),
-_size(size)
+Pointer::Pointer(char * start, char * stop) : _start(start), _stop(stop), _current(start)
 {
 
 }
@@ -18,9 +14,63 @@ Pointer::~Pointer()
 
 }
 
+Pointer & Pointer::start(char * value)
+{
+    _start = value;
+
+    return *this;
+}
+
+char * Pointer::start()
+{
+    return _start;
+}
+
+Pointer & Pointer::stop(char * value)
+{
+    _stop = value;
+
+    return *this;
+}
+
+char * Pointer::stop()
+{
+    return _stop;
+}
+
+Pointer & Pointer::current(char * value)
+{
+    _current = value;
+
+    return *this;
+}
+
+char * Pointer::current()
+{
+    return _current;
+}
+
 Pointer & Pointer::reset()
 {
     _current = _start;
+
+    return *this;
+}
+
+Pointer & Pointer::save()
+{
+    _stash[0] = _start;
+    _stash[1] = _stop;
+    _stash[2] = _current;
+
+    return *this;
+}
+
+Pointer & Pointer::restore()
+{
+    _start = _stash[0];
+    _stop = _stash[1];
+    _current = _stash[2];
 
     return *this;
 }
@@ -44,7 +94,7 @@ Pointer & Pointer::align_end()
 
 Pointer & Pointer::position(int value)
 {
-    if (value >= 0 && value < _size) _current = _start + value;
+    if (value >= 0 && (_start + value) < _stop) _current = _start + value;
 
     return *this;
 }
@@ -93,7 +143,8 @@ Pointer & Pointer::operator=(char * value)
 
 Pointer & Pointer::operator=(Pointer & other)
 {
-    position(other.position());
+    _current = _start + (other._current - other._start);
+    _stop = _start + (other._stop - other._start);
 
     return *this;
 }
@@ -104,7 +155,7 @@ char * Pointer::output(const char * delimiters)
 
     auto * ptr = _current;
 
-    _current += (size + strlen(delimiters));
+    _move(size + 1);
 
     return ptr;
 }
@@ -113,7 +164,7 @@ char * Pointer::output(const char * delimiters)
 
 Pointer & Pointer::_move(int value)
 {
-    if (_current + value >= _start && _current + value < _start + _size) _current += value;
+    if (_current + value >= _start && _current + value < _stop) _current += value;
 
     return *this;
 }

@@ -20,6 +20,7 @@ public:
     Stream & reset();
     Stream & flush();
 
+    stream::Channel command;
     stream::Channel input;
     stream::Channel output;
     stream::Channel error;

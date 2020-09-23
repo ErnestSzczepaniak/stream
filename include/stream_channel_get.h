@@ -18,7 +18,7 @@ namespace stream::channel
 class Get
 {
 public:
-    Get(char * buffer, int size);
+    Get(char * start, char * stop);
     ~Get();
 
     template<typename T = int> T decimal(const char * delimiters = " ");

@@ -3,7 +3,7 @@
 namespace stream::channel
 {
 
-Set::Set(char * buffer, int size) : pointer(buffer, size), ansi(pointer)
+Set::Set(char * start, char * stop) : pointer(start, stop), ansi(pointer)
 {
 
 }

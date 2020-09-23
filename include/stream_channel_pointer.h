@@ -17,10 +17,21 @@ namespace stream::channel
 class Pointer
 {
 public:
-    Pointer(char * start, int size);
+    Pointer(char * start, char * stop);
     ~Pointer();
 
+    Pointer & start(char * value);
+    char * start();
+
+    Pointer & stop(char * value);
+    char * stop();
+
+    Pointer & current(char * value);
+    char * current();
+
     Pointer & reset();
+    Pointer & save();
+    Pointer & restore();
 
     int offset_end();
     bool is_aligned();
@@ -31,13 +42,10 @@ public:
 
     operator char *();
     char operator*();
-
     Pointer & operator++(int);
     Pointer & operator--(int);
-    
     Pointer & operator+=(int value);
     Pointer & operator-=(int value);
-
     Pointer & operator=(char * value);
     Pointer & operator=(Pointer & other);
 
@@ -50,28 +58,22 @@ protected:
 
 private:
     char * _start;
+    char * _stop;
     char * _current;
-    int _size;  
+
+    char * _stash[3];
 
 }; /* class: Pointer */
 
 template<typename ...Args>
 Pointer & Pointer::input(const char * format, Args ... args)
 {
-    using namespace tools::string;
-
     int size;
 
-    if (is_aligned() == false)
-    {
-        size = insert::preppend::format(_current, _size - (_current - _start), format, args...);
-    }
-    else
-    {
-        size = insert::append::format(_current, _size - (_current - _start), format, args...);
-    }
+    if (is_aligned()) size = tools::string::insert::append::format(_current, _stop - _current, format, args...);
+    else size = tools::string::insert::preppend::format(_current, _stop - _current, format, args...);
 
-    if (size > 0) _current += size;
+    _move(size);
     
     return *this;
 }

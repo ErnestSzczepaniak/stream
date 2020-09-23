@@ -11,6 +11,7 @@
 
 #include "stream_channel_set.h"
 #include "stream_channel_get.h"
+#include "stream_channel_parse.h"
 
 namespace stream
 {
@@ -32,6 +33,7 @@ public:
 
     channel::Set set;
     channel::Get get;
+    channel::Parse parse;
 
     char buffer[size_buffer];
 

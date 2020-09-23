@@ -17,7 +17,7 @@ namespace stream::channel
 class Set
 {
 public:
-    Set(char * buffer, int size);
+    Set(char * start, char * stop);
     ~Set();
 
     template<typename ... Args>

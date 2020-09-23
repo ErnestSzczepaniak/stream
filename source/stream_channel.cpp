@@ -4,7 +4,11 @@
 namespace stream
 {
 
-Channel::Channel() : set(buffer, size_buffer), get(buffer, size_buffer)
+Channel::Channel()
+: 
+set(buffer, &buffer[size_buffer]),
+get(buffer, &buffer[size_buffer]), 
+parse(buffer, &buffer[size_buffer])
 {
 
 }

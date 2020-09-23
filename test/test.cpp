@@ -15,9 +15,12 @@ TEST_CASE("asd")
 
     //stream::channel::action:: action(nullptr, 2);
 
-    s.input.set.text("w1 10 20 30 | w2");
+    s.input.set.text("a d -c w r |");
 
-    auto * w = s.input.get.text("|");
+    auto * w = s.input.get.word();
+    w = s.input.get.word();
+    w = s.input.get.word();
 
+    s.input.parse.is_present("-c");
 
 }
