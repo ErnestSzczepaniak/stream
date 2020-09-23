@@ -1,7 +1,7 @@
-#include "stream_channel_pointer.h"
+#include "stream_stack_channel_pointer.h"
 #include "tools_string.h"
 
-namespace stream::channel
+namespace stream::stack::channel
 {
 
 Pointer::Pointer(char * start, char * stop) : _start(start), _stop(stop), _current(start)
@@ -38,16 +38,16 @@ char * Pointer::stop()
     return _stop;
 }
 
-Pointer & Pointer::current(char * value)
+Pointer & Pointer::position(int value)
 {
-    _current = value;
+    if (value >= 0 && _start + value < _stop) _current = _start + value;
 
     return *this;
 }
 
-char * Pointer::current()
+int Pointer::position()
 {
-    return _current;
+    return (_current - _start);
 }
 
 Pointer & Pointer::reset()
@@ -73,35 +73,6 @@ Pointer & Pointer::restore()
     _current = _stash[2];
 
     return *this;
-}
-
-int Pointer::offset_end()
-{
-    return tools::string::get::size(_current);
-}
-
-bool Pointer::is_aligned()
-{
-    return (*_current == 0);
-}
-
-Pointer & Pointer::align_end()
-{
-    _current += offset_end();
-
-    return *this;
-}
-
-Pointer & Pointer::position(int value)
-{
-    if (value >= 0 && (_start + value) < _stop) _current = _start + value;
-
-    return *this;
-}
-
-int Pointer::position()
-{
-    return (_current - _start);
 }
 
 Pointer::operator char *()
@@ -148,18 +119,6 @@ Pointer & Pointer::operator=(Pointer & other)
 
     return *this;
 }
-
-char * Pointer::output(const char * delimiters)
-{
-    auto size = tools::string::get::size(_current, delimiters);
-
-    auto * ptr = _current;
-
-    _move(size + 1);
-
-    return ptr;
-}
-
 /* ---------------------------------------------| info |--------------------------------------------- */
 
 Pointer & Pointer::_move(int value)
@@ -169,5 +128,4 @@ Pointer & Pointer::_move(int value)
     return *this;
 }
 
-
-}; /* namespace: stream::channel::action */
+}; /* namespace: stream::stack::channel */

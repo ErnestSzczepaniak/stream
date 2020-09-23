@@ -1,65 +1,65 @@
-#include "stream_channel_set_ansi_special.h"
+// #include "stream_channel_set_ansi_special.h"
 
-namespace stream::channel::set::ansi
-{
+// namespace stream::channel::set::ansi
+// {
 
-Special::Special(Pointer & pointer) : _pointer(pointer)
-{
+// Special::Special(Pointer & pointer) : _pointer(pointer)
+// {
 
-}
+// }
 
-Special::~Special()
-{
+// Special::~Special()
+// {
 
-}
+// }
 
-Special & Special::a()
-{
-    _pointer.input("%s", "\a");
+// Special & Special::a()
+// {
+//     _pointer.input("%s", "\a");
 
-    return *this;
-}
+//     return *this;
+// }
 
-Special & Special::b()
-{
-    _pointer.input("%s", "\b");
+// Special & Special::b()
+// {
+//     _pointer.input("%s", "\b");
 
-    return *this;
-}
+//     return *this;
+// }
 
-Special & Special::r()
-{
-    _pointer.input("%s", "\r");
+// Special & Special::r()
+// {
+//     _pointer.input("%s", "\r");
 
-    return *this;
-}
+//     return *this;
+// }
 
-Special & Special::n()
-{
-    _pointer.input("%s", "\n");
+// Special & Special::n()
+// {
+//     _pointer.input("%s", "\n");
 
-    return *this;
-}
+//     return *this;
+// }
 
-Special & Special::t()
-{
-    _pointer.input("%s", "\t");
+// Special & Special::t()
+// {
+//     _pointer.input("%s", "\t");
 
-    return *this;
-}
+//     return *this;
+// }
 
-Special & Special::v()
-{
-    _pointer.input("%s", "\v");
+// Special & Special::v()
+// {
+//     _pointer.input("%s", "\v");
 
-    return *this;
-}
+//     return *this;
+// }
 
-Special & Special::f()
-{
-    _pointer.input("%s", "\f");
+// Special & Special::f()
+// {
+//     _pointer.input("%s", "\f");
 
-    return *this;
-}
+//     return *this;
+// }
 
-}; /* namespace: stream::channel::set::ansi */
+// }; /* namespace: stream::channel::set::ansi */

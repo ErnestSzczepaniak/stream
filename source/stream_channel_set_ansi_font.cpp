@@ -1,87 +1,87 @@
-#include "stream_channel_set_ansi_font.h"
+// #include "stream_channel_set_ansi_font.h"
 
-namespace stream::channel::set::ansi
-{
+// namespace stream::channel::set::ansi
+// {
 
-Font::Font(Pointer & pointer) : _pointer(pointer)
-{
+// Font::Font(Pointer & pointer) : _pointer(pointer)
+// {
     
-}
+// }
 
-Font::~Font()
-{
+// Font::~Font()
+// {
     
-}
+// }
 
-Font & Font::bold(bool value)
-{
-    if (value) _pointer.input("%s", "\e[1m");
-    else _pointer.input("%s", "\e[21m");
+// Font & Font::bold(bool value)
+// {
+//     if (value) _pointer.input("%s", "\e[1m");
+//     else _pointer.input("%s", "\e[21m");
 
-    return *this;
-}
+//     return *this;
+// }
 
-Font & Font::faint(bool value)
-{
-    if (value) _pointer.input("%s", "\e[2m");
-    else _pointer.input("%s", "\e[22m");
+// Font & Font::faint(bool value)
+// {
+//     if (value) _pointer.input("%s", "\e[2m");
+//     else _pointer.input("%s", "\e[22m");
 
-    return *this;
-}
+//     return *this;
+// }
 
-Font & Font::italic(bool value)
-{
-    if (value) _pointer.input("%s", "\e[3m");
-    else _pointer.input("%s", "\e[23m");
+// Font & Font::italic(bool value)
+// {
+//     if (value) _pointer.input("%s", "\e[3m");
+//     else _pointer.input("%s", "\e[23m");
 
-    return *this;
-}
+//     return *this;
+// }
 
-Font & Font::underline(bool value)
-{
-    if (value) _pointer.input("%s", "\e[4m");
-    else _pointer.input("%s", "\e[24m");
+// Font & Font::underline(bool value)
+// {
+//     if (value) _pointer.input("%s", "\e[4m");
+//     else _pointer.input("%s", "\e[24m");
 
-    return *this;
-}
+//     return *this;
+// }
 
-Font & Font::blink(bool value)
-{
-    if (value) _pointer.input("%s", "\e[5m");
-    else _pointer.input("%s", "\e[25m");
+// Font & Font::blink(bool value)
+// {
+//     if (value) _pointer.input("%s", "\e[5m");
+//     else _pointer.input("%s", "\e[25m");
 
-    return *this;
-}
+//     return *this;
+// }
 
-Font & Font::reverse(bool value)
-{
-    if (value) _pointer.input("%s", "\e[7m");
-    else _pointer.input("%s", "\e[27m");
+// Font & Font::reverse(bool value)
+// {
+//     if (value) _pointer.input("%s", "\e[7m");
+//     else _pointer.input("%s", "\e[27m");
 
-    return *this;
-}
+//     return *this;
+// }
 
-Font & Font::invisible(bool value)
-{
-    if (value) _pointer.input("%s", "\e[8m");
-    else _pointer.input("%s", "\e[28m");
+// Font & Font::invisible(bool value)
+// {
+//     if (value) _pointer.input("%s", "\e[8m");
+//     else _pointer.input("%s", "\e[28m");
 
-    return *this;
-}
+//     return *this;
+// }
 
-Font & Font::crossed(bool value)
-{
-    if (value) _pointer.input("%s", "\e[9m");
-    else _pointer.input("%s", "\e[29m");
+// Font & Font::crossed(bool value)
+// {
+//     if (value) _pointer.input("%s", "\e[9m");
+//     else _pointer.input("%s", "\e[29m");
 
-    return *this;
-}
+//     return *this;
+// }
 
-Font & Font::reset()
-{
-    _pointer.input("%s", "\e[m");
+// Font & Font::reset()
+// {
+//     _pointer.input("%s", "\e[m");
 
-    return *this;
-}
+//     return *this;
+// }
 
-}; /* namespace: stream::channel::set::ansi */
+// }; /* namespace: stream::channel::set::ansi */

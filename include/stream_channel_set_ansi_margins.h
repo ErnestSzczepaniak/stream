@@ -1,33 +1,33 @@
-#ifndef _stream_channel_set_ansi_margins_h
-#define _stream_channel_set_ansi_margins_h
+// #ifndef _stream_channel_set_ansi_margins_h
+// #define _stream_channel_set_ansi_margins_h
 
-/**
- * @file	stream_channel_set_ansi_margins.h
- * @author	en2
- * @date	22-09-2020
- * @brief	
- * @details	
-**/
+// /**
+//  * @file	stream_channel_set_ansi_margins.h
+//  * @author	en2
+//  * @date	22-09-2020
+//  * @brief	
+//  * @details	
+// **/
 
-#include "stream_channel_pointer.h"
+// #include "stream_channel_pointer.h"
 
-namespace stream::channel::set::ansi
-{
+// namespace stream::channel::set::ansi
+// {
 
-class Margins
-{
-public:
-    Margins(Pointer & pointer);
-    ~Margins();
+// class Margins
+// {
+// public:
+//     Margins(Pointer & pointer);
+//     ~Margins();
 
-    Margins & horizontal(int from, int to);
-    Margins & vertical(int from, int to);     
+//     Margins & horizontal(int from, int to);
+//     Margins & vertical(int from, int to);     
 
-private:
-    Pointer & _pointer;
+// private:
+//     Pointer & _pointer;
 
-}; /* class: Margins */
+// }; /* class: Margins */
 
-}; /* namespace: stream::channel::set::ansi */
+// }; /* namespace: stream::channel::set::ansi */
 
-#endif /* define: stream_channel_set_ansi_margins_h */
+// #endif /* define: stream_channel_set_ansi_margins_h */

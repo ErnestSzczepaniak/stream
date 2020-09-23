@@ -1,30 +1,30 @@
-#include "stream_channel_set_ansi_scroll.h"
+// #include "stream_channel_set_ansi_scroll.h"
 
-namespace stream::channel::set::ansi
-{
+// namespace stream::channel::set::ansi
+// {
 
-Scroll::Scroll(Pointer & pointer) : _pointer(pointer)
-{
+// Scroll::Scroll(Pointer & pointer) : _pointer(pointer)
+// {
 
-}
+// }
 
-Scroll::~Scroll()
-{
+// Scroll::~Scroll()
+// {
 
-}
+// }
 
-Scroll & Scroll::up()
-{
-    _pointer.input("%s", "\eD");
+// Scroll & Scroll::up()
+// {
+//     _pointer.input("%s", "\eD");
 
-    return *this;
-}
+//     return *this;
+// }
 
-Scroll & Scroll::down()
-{
-    _pointer.input("%s", "\eM");
+// Scroll & Scroll::down()
+// {
+//     _pointer.input("%s", "\eM");
 
-    return *this;
-}
+//     return *this;
+// }
 
-}; /* namespace: stream::channel::set::ansi */
+// }; /* namespace: stream::channel::set::ansi */

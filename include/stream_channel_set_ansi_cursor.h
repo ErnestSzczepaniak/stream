@@ -1,37 +1,37 @@
-#ifndef _stream_channel_set_ansi_cursor_h
-#define _stream_channel_set_ansi_cursor_h
+// #ifndef _stream_channel_set_ansi_cursor_h
+// #define _stream_channel_set_ansi_cursor_h
 
-/**
- * @file	stream_channel_set_ansi_cursor.h
- * @author	en2
- * @date	22-09-2020
- * @brief	
- * @details	
-**/
+// /**
+//  * @file	stream_channel_set_ansi_cursor.h
+//  * @author	en2
+//  * @date	22-09-2020
+//  * @brief	
+//  * @details	
+// **/
 
-#include "stream_channel_set_ansi_cursor_move.h"
+// #include "stream_channel_set_ansi_cursor_move.h"
 
-namespace stream::channel::set::ansi
-{
+// namespace stream::channel::set::ansi
+// {
 
-class Cursor
-{
-public:
-    Cursor(Pointer & pointer);
-    ~Cursor();
+// class Cursor
+// {
+// public:
+//     Cursor(Pointer & pointer);
+//     ~Cursor();
 
-    Cursor & save();
-    Cursor & restore();
-    Cursor & show();
-    Cursor & hide();
+//     Cursor & save();
+//     Cursor & restore();
+//     Cursor & show();
+//     Cursor & hide();
 
-    cursor::Move move;   
+//     cursor::Move move;   
 
-private:
-    Pointer & _pointer;
+// private:
+//     Pointer & _pointer;
 
-}; /* class: Cursor */
+// }; /* class: Cursor */
 
-}; /* namespace: stream::channel::set::ansi */
+// }; /* namespace: stream::channel::set::ansi */
 
-#endif /* define: stream_channel_set_ansi_cursor_h */
+// #endif /* define: stream_channel_set_ansi_cursor_h */

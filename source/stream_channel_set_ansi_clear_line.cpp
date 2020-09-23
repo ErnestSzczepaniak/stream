@@ -1,37 +1,37 @@
-#include "stream_channel_set_ansi_clear_line.h"
+// #include "stream_channel_set_ansi_clear_line.h"
 
-namespace stream::channel::set::ansi::clear
-{
+// namespace stream::channel::set::ansi::clear
+// {
 
-Line::Line(Pointer & pointer) : _pointer(pointer)
-{
+// Line::Line(Pointer & pointer) : _pointer(pointer)
+// {
 
-}
+// }
 
-Line::~Line()
-{
+// Line::~Line()
+// {
 
-}
+// }
 
-Line & Line::right()
-{
-    _pointer.input("%s", "\e[K");
+// Line & Line::right()
+// {
+//     _pointer.input("%s", "\e[K");
 
-    return *this;
-}
+//     return *this;
+// }
 
-Line & Line::left()
-{
-    _pointer.input("%s", "\e[1K");
+// Line & Line::left()
+// {
+//     _pointer.input("%s", "\e[1K");
 
-    return *this;
-}
+//     return *this;
+// }
 
-Line & Line::entire()
-{
-    _pointer.input("%s", "\e[2K");
+// Line & Line::entire()
+// {
+//     _pointer.input("%s", "\e[2K");
 
-    return *this;
-}
+//     return *this;
+// }
 
-}; /* namespace: stream::channel::set::ansi::clear */
+// }; /* namespace: stream::channel::set::ansi::clear */

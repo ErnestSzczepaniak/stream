@@ -1,35 +1,35 @@
-#ifndef _stream_channel_set_ansi_clear_line_h
-#define _stream_channel_set_ansi_clear_line_h
+// #ifndef _stream_channel_set_ansi_clear_line_h
+// #define _stream_channel_set_ansi_clear_line_h
 
-/**
- * @file	stream_channel_set_ansi_clear_line.h
- * @author	en2
- * @date	22-09-2020
- * @brief	
- * @details	
-**/
+// /**
+//  * @file	stream_channel_set_ansi_clear_line.h
+//  * @author	en2
+//  * @date	22-09-2020
+//  * @brief	
+//  * @details	
+// **/
 
-#include "stream_channel_pointer.h"
+// #include "stream_channel_pointer.h"
 
-namespace stream::channel::set::ansi::clear
-{
+// namespace stream::channel::set::ansi::clear
+// {
 
-class Line
-{
+// class Line
+// {
 
-public:
-    Line(Pointer & pointer);
-    ~Line();
+// public:
+//     Line(Pointer & pointer);
+//     ~Line();
 
-    Line & right();
-    Line & left();
-    Line & entire();    
+//     Line & right();
+//     Line & left();
+//     Line & entire();    
 
-private:
-    Pointer & _pointer;
+// private:
+//     Pointer & _pointer;
 
-}; /* class: Line */
+// }; /* class: Line */
 
-}; /* namespace: stream::channel::set::ansi::clear */
+// }; /* namespace: stream::channel::set::ansi::clear */
 
-#endif /* define: stream_channel_set_ansi_clear_line_h */
+// #endif /* define: stream_channel_set_ansi_clear_line_h */

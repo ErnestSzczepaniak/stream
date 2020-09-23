@@ -9,7 +9,7 @@
  * @details	
 **/
 
-#include "stream_channel.h"
+#include "stream_stack.h"
 
 class Stream
 {
@@ -20,10 +20,10 @@ public:
     Stream & reset();
     Stream & flush();
 
-    stream::Channel command;
-    stream::Channel input;
-    stream::Channel output;
-    stream::Channel error;
+    stream::Stack command;
+    // stream::Channel input;
+    // stream::Channel output;
+    // stream::Channel error;
 
 }; /* class: Stream */
 

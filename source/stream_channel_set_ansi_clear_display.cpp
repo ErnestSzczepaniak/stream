@@ -1,37 +1,37 @@
-#include "stream_channel_set_ansi_clear_display.h"
+// #include "stream_channel_set_ansi_clear_display.h"
 
-namespace stream::channel::set::ansi::clear
-{
+// namespace stream::channel::set::ansi::clear
+// {
 
-Display::Display(Pointer & pointer) : _pointer(pointer)
-{
+// Display::Display(Pointer & pointer) : _pointer(pointer)
+// {
 
-}
+// }
 
-Display::~Display()
-{
+// Display::~Display()
+// {
 
-}
+// }
 
-Display & Display::right()
-{
-    _pointer.input("%s", "\e[J");
+// Display & Display::right()
+// {
+//     _pointer.input("%s", "\e[J");
 
-    return *this;
-}
+//     return *this;
+// }
 
-Display & Display::left()
-{
-    _pointer.input("%s", "\e[1J");
+// Display & Display::left()
+// {
+//     _pointer.input("%s", "\e[1J");
 
-    return *this;
-}
+//     return *this;
+// }
 
-Display & Display::entire()
-{
-    _pointer.input("%s", "\e[2J");
+// Display & Display::entire()
+// {
+//     _pointer.input("%s", "\e[2J");
 
-    return *this;
-}
+//     return *this;
+// }
 
-}; /* namespace: stream::channel::set::ansi::clear */
+// }; /* namespace: stream::channel::set::ansi::clear */
