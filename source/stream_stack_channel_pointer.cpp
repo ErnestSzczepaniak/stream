@@ -50,6 +50,11 @@ int Pointer::position()
     return (_current - _start);
 }
 
+int Pointer::span()
+{
+    return (_stop - _start);
+}
+
 Pointer & Pointer::reset()
 {
     _current = _start;
@@ -85,24 +90,11 @@ char Pointer::operator*()
     return *_current;
 }
 
-Pointer & Pointer::operator++(int)
+Pointer & Pointer::move(int value)
 {
-    return _move(1);
-}
+    if (_current + value >= _start && _current + value < _stop) _current += value;
 
-Pointer & Pointer::operator--(int)
-{
-    return _move(-1);
-}
-
-Pointer & Pointer::operator+=(int value)
-{
-    return _move(value);
-}
-
-Pointer & Pointer::operator-=(int value)
-{
-    return _move(-value);
+    return *this;
 }
 
 Pointer & Pointer::operator=(char * value)
@@ -121,11 +113,6 @@ Pointer & Pointer::operator=(Pointer & other)
 }
 /* ---------------------------------------------| info |--------------------------------------------- */
 
-Pointer & Pointer::_move(int value)
-{
-    if (_current + value >= _start && _current + value < _stop) _current += value;
 
-    return *this;
-}
 
 }; /* namespace: stream::stack::channel */

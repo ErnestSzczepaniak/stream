@@ -29,21 +29,18 @@ public:
     Pointer & position(int value);
     int position();
 
+    int span();
+
+    Pointer & move(int value);
+
     Pointer & reset();
     Pointer & save();
     Pointer & restore();
 
     operator char *();
     char operator*();
-    Pointer & operator++(int);
-    Pointer & operator--(int);
-    Pointer & operator+=(int value);
-    Pointer & operator-=(int value);
     Pointer & operator=(char * value);
     Pointer & operator=(Pointer & other);
-
-protected:
-    Pointer & _move(int value);
 
 private:
     char * _start;

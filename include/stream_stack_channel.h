@@ -17,16 +17,33 @@ namespace stream::stack
 class Channel
 {
 public:
-    Channel(char * start, char * stop);
+    Channel(channel::Pointer & pointer);
     ~Channel();
 
-    channel::Pointer pointer;
-
 protected:
-    template<typename ...Args> void input(const char * format, Args ... args) {}
-    char * output(const char * delimiters) {}
+    template<typename ...Args> void _input_format(const char * format, Args ... args);
+    void _input_data(void * data, int size);
+
+    char * _output_format(const char * delimiters = " ");
+    void * _output_data(int size);
+
+    char * _find_format(char * string);
+
+private:
+    channel::Pointer & _pointer;
 
 }; /* class: Channel */
+
+template<typename ...Args>
+void Channel::_input_format(const char * format, Args ... args)
+{
+    int size;
+
+    if (*_pointer == 0) size = tools::string::insert::append::format(_pointer, _pointer.stop() - _pointer, format, args...);
+    else size = tools::string::insert::preppend::format(_pointer, _pointer.stop() - _pointer, format, args...);
+
+    _pointer.move(size);
+}
 
 }; /* namespace: stream::stack */
 

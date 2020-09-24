@@ -6,9 +6,9 @@ namespace stream
 
 Stack::Stack()
 : 
-//set(buffer, &buffer[size_buffer]),
-pop(buffer, &buffer[size_buffer])
-//parse(buffer, &buffer[size_buffer])
+push(buffer, &buffer[size_buffer]),
+pop(buffer, &buffer[size_buffer]),
+parse(buffer, &buffer[size_buffer])
 {
 
 }
@@ -35,20 +35,22 @@ bool Stack::is_full()
 
 Stack & Stack::reset()
 {
-    //get.pointer.reset();
-    //set.pointer.reset();
+    push.pointer.reset();
+    pop.pointer.reset();
+    parse.pointer.reset();
 
-    //memset(buffer, 0, size_buffer);
+    memset(buffer, 0, size_buffer);
 
     return *this;
 }
 
 Stack & Stack::operator=(Stack & other)
 {
-    //set.pointer = other.set.pointer;
-    //get.pointer = other.get.pointer;
+    push.pointer = other.push.pointer;
+    pop.pointer = other.pop.pointer;
+    parse.pointer = other.parse.pointer;
 
-    //memcpy(buffer, other.buffer, size_buffer);
+    memcpy(buffer, other.buffer, size_buffer);
 
     return *this;
 }

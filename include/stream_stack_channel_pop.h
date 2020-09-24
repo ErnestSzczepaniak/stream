@@ -10,7 +10,6 @@
 **/
 
 #include "stream_stack_channel.h"
-#include <string>
 
 namespace stream::stack::channel
 {
@@ -21,6 +20,8 @@ public:
     Pop(char * start, char * stop);
     ~Pop();
 
+    template<typename T> T variable();
+
     int decimal(const char * delimiters = " ");
     int hexadecimal(const char * delimiters = " "); 
     float floating(const char * delimiter = " ");
@@ -30,7 +31,16 @@ public:
     char * text(const char * delimiters = "\0");
     void * data(int size);
 
+    Pointer pointer;
+
 }; /* class: Pop */
+
+template<typename T>
+T Pop::variable()
+{
+    if (auto * ptr = (T*) data(sizeof(T)); ptr != nullptr) return *ptr;
+    else return {};
+}
 
 }; /* namespace: stream::channel */
 

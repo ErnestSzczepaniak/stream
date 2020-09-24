@@ -9,16 +9,16 @@
  * @details	
 **/
 
-//#include "stream_stack_set.h"
+#include "stream_stack_channel_push.h"
 #include "stream_stack_channel_pop.h"
-//#include "stream_stack_parse.h"
+#include "stream_stack_channel_parse.h"
 
 namespace stream
 {
 
 class Stack
 {
-    static constexpr auto size_buffer = 4096;
+    static constexpr auto size_buffer = 16384;
 
 public:
     Stack();
@@ -32,9 +32,9 @@ public:
 
     Stack & operator=(Stack & other);
 
-    //channel::Set set;
+    stack::channel::Push push;
     stack::channel::Pop pop;
-    //channel::Parse parse;
+    stack::channel::Parse parse;
 
     char buffer[size_buffer];
 

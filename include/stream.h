@@ -21,9 +21,9 @@ public:
     Stream & flush();
 
     stream::Stack command;
-    // stream::Channel input;
-    // stream::Channel output;
-    // stream::Channel error;
+    stream::Stack input;
+    stream::Stack output;
+    stream::Stack error;
 
 }; /* class: Stream */
 
