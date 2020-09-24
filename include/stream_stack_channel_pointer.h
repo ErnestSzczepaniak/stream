@@ -26,16 +26,16 @@ public:
     Pointer & stop(char * value);
     char * stop();
 
+    Pointer & limit(char * value);
+    char * limit();
+
     Pointer & position(int value);
     int position();
 
     int span();
 
     Pointer & move(int value);
-
     Pointer & reset();
-    Pointer & save();
-    Pointer & restore();
 
     operator char *();
     char operator*();
@@ -46,8 +46,7 @@ private:
     char * _start;
     char * _stop;
     char * _current;
-
-    char * _stash[3];
+    char * _limit;
 
 }; /* class: Pointer */
 

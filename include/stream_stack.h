@@ -18,7 +18,7 @@ namespace stream
 
 class Stack
 {
-    static constexpr auto size_buffer = 16384;
+    static constexpr auto size_buffer = 8192;
 
 public:
     Stack();

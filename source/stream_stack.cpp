@@ -5,10 +5,10 @@ namespace stream
 {
 
 Stack::Stack()
-: 
-push(buffer, &buffer[size_buffer]),
-pop(buffer, &buffer[size_buffer]),
-parse(buffer, &buffer[size_buffer])
+:
+push(buffer, buffer + size_buffer),
+pop(buffer, buffer + size_buffer),
+parse(buffer, buffer + size_buffer)
 {
 
 }
@@ -50,9 +50,7 @@ Stack & Stack::operator=(Stack & other)
     pop.pointer = other.pop.pointer;
     parse.pointer = other.parse.pointer;
 
-    memcpy(buffer, other.buffer, size_buffer);
-
-    return *this;
+    memcpy(buffer, other.buffer, other.size());
 }
 
 }; /* namespace: stream */

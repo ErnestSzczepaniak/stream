@@ -15,6 +15,7 @@ Stream::~Stream()
 
 Stream & Stream::reset()
 {
+    command.reset();
     input.reset();
     output.reset();
     error.reset();

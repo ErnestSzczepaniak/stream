@@ -4,7 +4,12 @@
 namespace stream::stack::channel
 {
 
-Pointer::Pointer(char * start, char * stop) : _start(start), _stop(stop), _current(start)
+Pointer::Pointer(char * start, char * stop)
+: 
+_start(start), 
+_stop(stop),
+_current(start),
+_limit(stop)
 {
 
 }
@@ -38,9 +43,22 @@ char * Pointer::stop()
     return _stop;
 }
 
+Pointer & Pointer::limit(char * value)
+{
+    _limit = value;
+
+    return *this;
+}
+
+char * Pointer::limit()
+{
+    return _limit;
+}
+
 Pointer & Pointer::position(int value)
 {
-    if (value >= 0 && _start + value < _stop) _current = _start + value;
+    if (value >= 0 && _start + value < _stop && _start + value < _limit) 
+        _current = _start + value;
 
     return *this;
 }
@@ -58,24 +76,7 @@ int Pointer::span()
 Pointer & Pointer::reset()
 {
     _current = _start;
-
-    return *this;
-}
-
-Pointer & Pointer::save()
-{
-    _stash[0] = _start;
-    _stash[1] = _stop;
-    _stash[2] = _current;
-
-    return *this;
-}
-
-Pointer & Pointer::restore()
-{
-    _start = _stash[0];
-    _stop = _stash[1];
-    _current = _stash[2];
+    _limit = _stop;
 
     return *this;
 }
@@ -92,7 +93,8 @@ char Pointer::operator*()
 
 Pointer & Pointer::move(int value)
 {
-    if (_current + value >= _start && _current + value < _stop) _current += value;
+    if (_current + value >= _start && _current + value < _stop && _current + value < _limit) 
+        _current += value;
 
     return *this;
 }
@@ -111,8 +113,7 @@ Pointer & Pointer::operator=(Pointer & other)
 
     return *this;
 }
+
 /* ---------------------------------------------| info |--------------------------------------------- */
-
-
 
 }; /* namespace: stream::stack::channel */
