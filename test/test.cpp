@@ -18,10 +18,8 @@ TEST_CASE("asd")
 {
     Stream s;
 
-    s.output.push.decimal(10);
+    s.command.push.text("sample | ww");
 
-
-    auto w = s.input.pop.decimal();
 
 
 }

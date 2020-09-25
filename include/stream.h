@@ -13,6 +13,9 @@
 
 class Stream
 {
+    static constexpr auto size_control = 128;
+    static constexpr auto size_io = 8192;
+
 public:
     Stream();
     ~Stream();
@@ -20,10 +23,10 @@ public:
     Stream & reset();
     Stream & flush();
 
-    stream::Stack command;
-    stream::Stack input;
-    stream::Stack output;
-    stream::Stack error;
+    stream::Stack<size_control> command;
+    stream::Stack<size_io> input;
+    stream::Stack<size_io> output;
+    stream::Stack<size_control> error;
 
 }; /* class: Stream */
 
