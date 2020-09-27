@@ -24,6 +24,7 @@ public:
     Stack();
     ~Stack();
 
+    Stack & clear();
     Stack & reset();
 
     int size_actual();
@@ -83,6 +84,14 @@ Stack<size> & Stack<size>::reset()
     push.pointer.reset();
     pop.pointer.reset();
     parse.pointer.reset();
+
+    return *this;
+}
+
+template<int size>
+Stack<size> & Stack<size>::clear()
+{
+    reset();
 
     memset(buffer, 0, size);
 

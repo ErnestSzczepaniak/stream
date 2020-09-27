@@ -21,6 +21,7 @@ public:
     ~Stream();
 
     Stream & reset();
+    Stream & clear();
     Stream & flush();
 
     stream::Stack<size_control> command;

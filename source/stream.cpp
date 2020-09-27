@@ -2,10 +2,7 @@
 
 Stream::Stream()
 {
-    command.reset();
-    input.reset();
-    output.reset();
-    error.reset();
+    clear();
 }
 
 Stream::~Stream()
@@ -19,6 +16,16 @@ Stream & Stream::reset()
     input.reset();
     output.reset();
     error.reset();
+
+    return *this;
+}
+
+Stream & Stream::clear()
+{
+    command.clear();
+    input.clear();
+    output.clear();
+    error.clear();
 
     return *this;
 }
