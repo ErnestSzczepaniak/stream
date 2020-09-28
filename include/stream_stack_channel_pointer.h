@@ -34,8 +34,11 @@ public:
 
     int span();
 
-    Pointer & move(int value);
+    Pointer & save();
+    Pointer & restore();
     Pointer & reset();
+
+    Pointer & move(int value);
 
     operator char *();
     char operator*();
@@ -47,6 +50,8 @@ private:
     char * _stop;
     char * _current;
     char * _limit;
+
+    char * _stash[4];
 
 }; /* class: Pointer */
 

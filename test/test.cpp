@@ -20,6 +20,7 @@ TEST_CASE("asd")
 
     s.command.push.text("sample | ww");
 
+    auto w = s.command.info.words();
 
 
 }

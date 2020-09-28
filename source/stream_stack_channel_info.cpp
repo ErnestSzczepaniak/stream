@@ -23,4 +23,9 @@ int Info::count(char * word, const char * delimiters)
     return tools::string::count::word(pointer, word, delimiters);
 }
 
+int Info::words(const char * delimiters)
+{
+    return tools::string::count::words(pointer, delimiters);
+}
+
 }; /* namespace: stream::stack::channel */

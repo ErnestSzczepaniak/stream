@@ -22,6 +22,8 @@ public:
 
     int offset(char * delimiters);
     int count(char * word, const char * delimiters = " ");
+    int words(const char * delimiters = " ");
+
 
     Pointer pointer;
 
