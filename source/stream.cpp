@@ -2,7 +2,7 @@
 
 Stream::Stream()
 {
-    clear();
+
 }
 
 Stream::~Stream()

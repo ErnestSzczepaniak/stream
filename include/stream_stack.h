@@ -51,7 +51,7 @@ pop(buffer, buffer + size),
 parse(buffer, buffer + size),
 info(buffer, buffer + size)
 {
-
+    clear();
 }
 
 template<int size>
