@@ -23,4 +23,7 @@ TEST_CASE("asd")
     auto w = s.command.info.words();
 
 
+    auto rr = s.command;
+
+    s.command.reset();
 }

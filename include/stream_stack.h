@@ -22,6 +22,7 @@ class Stack
 {
 public:
     Stack();
+    Stack(Stack & other);
     ~Stack();
 
     Stack & clear();
@@ -52,6 +53,18 @@ parse(buffer, buffer + size),
 info(buffer, buffer + size)
 {
     clear();
+}
+
+template<int size>
+Stack<size>::Stack(Stack & other)
+:
+push(buffer, buffer + size),
+pop(buffer, buffer + size),
+parse(buffer, buffer + size),
+info(buffer, buffer + size)
+{
+    clear();
+    *this = other;
 }
 
 template<int size>
