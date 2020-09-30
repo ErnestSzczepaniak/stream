@@ -33,7 +33,7 @@ Stream & Stream::clear()
 Stream & Stream::flush()
 {
     input = output;
-    output.reset();
+    output.clear();
 
     return *this;
 }
