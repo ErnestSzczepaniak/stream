@@ -23,8 +23,8 @@ public:
     template<typename ... Args> Push & format(const char * format, Args ... args);
     template<typename T> Push & variable(T & variable);
 
-    Push & decimal(int value, const char * delimiters = " ");
-    Push & hexadecimal(int value, int digits = 8, const char * delimiters = " ");
+    Push & decimal(unsigned int value, const char * delimiters = " ");
+    Push & hexadecimal(unsigned int value, int digits = 8, const char * delimiters = " ");
     Push & floating(float value, int digits = 2, const char * delimiters = " ");
 
     Push & character(char value, const char * delimiters = " ");

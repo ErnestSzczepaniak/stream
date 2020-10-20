@@ -14,18 +14,18 @@ Pop::~Pop()
 
 }
 
-int Pop::decimal(const char * delimiters)
+unsigned int Pop::decimal(const char * delimiters)
 {
     auto * ptr = _output_format(delimiters);
 
-    return strtol(ptr, nullptr, 10);
+    return strtoul(ptr, nullptr, 10);
 }
 
-int Pop::hexadecimal(const char * delimiters)
+unsigned int Pop::hexadecimal(const char * delimiters)
 {
     auto * ptr = _output_format(delimiters);
 
-    return strtol(ptr, nullptr, 16);
+    return strtoul(ptr, nullptr, 16);
 }
 
 float Pop::floating(const char * delimiters)

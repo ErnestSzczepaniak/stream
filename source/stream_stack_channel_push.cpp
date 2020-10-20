@@ -13,14 +13,14 @@ Push::~Push()
 
 }
 
-Push & Push::decimal(int value, const char * delimiters)
+Push & Push::decimal(unsigned int value, const char * delimiters)
 {
     _input_format("%d%s", value, delimiters);
 
     return *this;
 }
 
-Push & Push::hexadecimal(int value, int digits, const char * delimiters)
+Push & Push::hexadecimal(unsigned int value, int digits, const char * delimiters)
 {
     _input_format("0x%0*x%s", digits, value, delimiters);
 

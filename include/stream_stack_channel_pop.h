@@ -22,8 +22,8 @@ public:
 
     template<typename T> T variable();
 
-    int decimal(const char * delimiters = " ");
-    int hexadecimal(const char * delimiters = " "); 
+    unsigned int decimal(const char * delimiters = " ");
+    unsigned int hexadecimal(const char * delimiters = " "); 
     float floating(const char * delimiter = " ");
     char character(const char * delimiters = " ");
 
