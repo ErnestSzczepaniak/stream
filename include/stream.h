@@ -14,7 +14,7 @@
 class Stream
 {
     static constexpr auto size_control = 128;
-    static constexpr auto size_io = 8192;
+    static constexpr auto size_io = 16384;
 
 public:
     Stream();

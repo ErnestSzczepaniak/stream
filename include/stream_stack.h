@@ -118,7 +118,7 @@ Stack<size> & Stack<size>::operator=(Stack & other)
     pop.pointer = other.pop.pointer;
     parse.pointer = other.parse.pointer;
 
-    memcpy(buffer, other.buffer, other.size_actual());
+    memcpy(buffer, other.buffer, other.push.pointer.position());
 
     return *this;
 }

@@ -54,7 +54,7 @@ void * Channel::_output_data(int size)
 }
 
 char * Channel::_find_format(char * string)
-{
+{   
     return tools::string::find::substring(_pointer, string, _pointer.span());
 }
 

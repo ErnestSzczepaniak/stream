@@ -16,7 +16,7 @@ Parse::~Parse()
 
 bool Parse::is_present(const char * delimiters)
 {
-    return (_find_format(_option) != nullptr);
+    return (tools::string::count::word(pointer, _option) > 0);
 }
 
 bool Parse::is_equal(char * value, const char * delimiters)
