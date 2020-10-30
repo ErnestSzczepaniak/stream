@@ -123,7 +123,6 @@ Stack<size> & Stack<size>::operator=(Stack & other)
     return *this;
 }
 
-
 }; /* namespace: stream */
 
 #endif /* define: stream_stack_h */
