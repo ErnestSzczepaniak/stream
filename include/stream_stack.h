@@ -33,6 +33,7 @@ public:
     bool is_full();
 
     Stack & operator=(Stack & other);
+    bool operator==(Stack & other);
 
     stack::channel::Push push;
     stack::channel::Pop pop;
@@ -118,9 +119,16 @@ Stack<size> & Stack<size>::operator=(Stack & other)
     pop.pointer = other.pop.pointer;
     parse.pointer = other.parse.pointer;
 
-    memcpy(buffer, other.buffer, other.push.pointer.position());
+    // memcpy(buffer, other.buffer, other.push.pointer.position());
+    memcpy(buffer, other.buffer, size);
 
     return *this;
+}
+
+template<int size>
+bool Stack<size>::operator==(Stack & other)
+{
+    return (memcmp(buffer, other.buffer, size) == 0);
 }
 
 }; /* namespace: stream */
