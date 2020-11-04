@@ -27,19 +27,19 @@ bool Parse::is_equal(char * value, const char * delimiters)
     else return false;
 }
 
-int Parse::decimal(const char * delimiters)
+unsigned int Parse::decimal(const char * delimiters)
 {
     auto * ptr = _find_format(_option);
 
-    if (ptr != nullptr) return strtol(ptr + tools::string::get::size(ptr, delimiters) + strlen(delimiters), nullptr, 10);
+    if (ptr != nullptr) return strtoul(ptr + tools::string::get::size(ptr, delimiters) + strlen(delimiters), nullptr, 10);
     else return {};
 }
 
-int Parse::hexadecimal(const char * delimiters)
+unsigned int Parse::hexadecimal(const char * delimiters)
 {
     auto * ptr = _find_format(_option);
 
-    if (ptr != nullptr) return strtol(ptr + tools::string::get::size(ptr, delimiters) + strlen(delimiters), nullptr, 16);
+    if (ptr != nullptr) return strtoul(ptr + tools::string::get::size(ptr, delimiters) + strlen(delimiters), nullptr, 16);
     else return {};
 }
 
