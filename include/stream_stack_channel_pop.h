@@ -29,6 +29,7 @@ public:
 
     char * word(const char * delimiters = " ");
     char * text(const char * delimiters = "\0");
+    char * line();
     void * data(int size);
 
     Pointer pointer;

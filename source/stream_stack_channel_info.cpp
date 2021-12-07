@@ -28,4 +28,9 @@ int Info::words(const char * delimiters)
     return tools::string::count::words(pointer, delimiters);
 }
 
+int Info::lines()
+{
+    return tools::string::count::character(pointer, 10) + 1;
+}
+
 }; /* namespace: stream::stack::channel */

@@ -50,6 +50,11 @@ char * Pop::text(const char * delimiters)
     return _output_format(delimiters);
 }
 
+char * Pop::line()
+{
+    return _output_format("\n");
+}
+
 void * Pop::data(int size)
 {
     return _output_data(size);

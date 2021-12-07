@@ -22,11 +22,13 @@ public:
 
     bool is_present(const char * delimiters = " ");
     bool is_equal(char * value, const char * delimiters = " \0");
+    bool starts_with(char * value);
 
     unsigned int decimal(const char * delimiters = " ");
     unsigned int hexadecimal(const char * delimiters = " "); 
     float floating(const char * delimiters = " ");
     char character(const char * delimiters = " ");
+    bool boolean(const char * delimiters = " ");
 
     char * word(const char * delimiters = " ");
     char * text(const char * delimiters = "\0");

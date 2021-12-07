@@ -23,7 +23,7 @@ public:
     int offset(char * delimiters);
     int count(char * word, const char * delimiters = " ");
     int words(const char * delimiters = " ");
-
+    int lines();
 
     Pointer pointer;
 
@@ -35,8 +35,6 @@ private:
 
 }; /* class: Info */
 
-
 }; /* namespace: stream::stack::channel */
-
 
 #endif /* define: stream_stack_channel_info_h */

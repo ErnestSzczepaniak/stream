@@ -27,6 +27,15 @@ bool Parse::is_equal(char * value, const char * delimiters)
     else return false;
 }
 
+bool Parse::starts_with(char * value)
+{
+    auto * ptr = word();
+    
+    for (int i = 0; i < tools::string::get::size(value); i++) if (ptr[i] != value[i]) return false;
+
+    return true;
+}
+
 unsigned int Parse::decimal(const char * delimiters)
 {
     auto * ptr = _find_format(_option);
@@ -57,6 +66,11 @@ char Parse::character(const char * delimiters)
 
     if (ptr != nullptr) return *(ptr + tools::string::get::size(ptr, delimiters) + strlen(delimiters));
     else return {};
+}
+
+bool Parse::boolean(const char * delimiters)
+{
+    return (decimal(delimiters) == 1);
 }
 
 char * Parse::word(const char * delimiters)
